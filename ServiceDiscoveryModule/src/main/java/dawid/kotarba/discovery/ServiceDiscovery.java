@@ -1,11 +1,11 @@
-package dawid.kotarba;
+package dawid.kotarba.discovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RegistrationServiceApplication {
+public class ServiceDiscovery {
     public static void main(String[] args) {
-        SpringApplication.run(RegistrationServiceApplication.class, args);
+        SpringApplication.run(ServiceDiscovery.class, args);
     }
 }

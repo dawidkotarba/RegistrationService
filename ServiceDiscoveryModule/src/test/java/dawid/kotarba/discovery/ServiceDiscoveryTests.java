@@ -1,4 +1,4 @@
-package dawid.kotarba;
+package dawid.kotarba.discovery;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,8 +6,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = RegistrationServiceApplication.class)
-public class RegistrationServiceApplicationTests {
+@SpringApplicationConfiguration(classes = ServiceDiscovery.class)
+public class ServiceDiscoveryTests {
 
     @Test
     public void contextLoads() {
