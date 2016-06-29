@@ -1,63 +1,87 @@
 buildscript {
-	ext {
-		springBootVersion = "1.3.5.RELEASE"
-		swaggerVersion = "2.0.2"
+    ext {
+        springBootVersion = "1.3.5.RELEASE"
+        swaggerVersion = "2.0.2"
         scalaVeresion = "2.11.8"
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-		classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0"
-	}
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0"
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+    }
 }
 
 apply plugin: "scala"
 apply plugin: "spring-boot"
-apply plugin: "com.github.kt3k.coveralls"
-apply plugin: "checkstyle"
-apply plugin: "jacoco"
+//apply plugin: "com.github.kt3k.coveralls"
+//apply plugin: "checkstyle"
+//apply plugin: "jacoco"
+apply plugin: "io.spring.dependency-management"
 
 jar {
-	baseName = "RegistrationService"
-	version = "0.0.1-SNAPSHOT"
+    baseName = "RegistrationService"
+    version = "0.0.1-SNAPSHOT"
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    jcenter()
+    maven { url 'https://repo.spring.io/release/' }
+    maven { url "http://repo.spring.io/libs-snapshot-local" }
+    maven { url "http://repo.spring.io/libs-milestone-local" }
+    maven { url "http://repo.spring.io/libs-release-local" }
 }
 
+// for eureka client
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.springframework.cloud:spring-cloud-netflix:1.1.2.RELEASE"
+//    }
+//}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.BUILD-SNAPSHOT"
+    }
+}
 
 dependencies {
     compile "org.scala-lang:scala-library:${scalaVeresion}"
-	compile "org.springframework.boot:spring-boot-starter"
-	compile "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter"
+    compile "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+    compile "org.springframework.cloud:spring-cloud-starter-eureka-server"
+
+    // for eureka client
+    //    compile "org.springframework.cloud:spring-cloud-starter-eureka"
 
     // Swagger
     compile "io.springfox:springfox-swagger2:${swaggerVersion}"
     compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
-
+//
     testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
-checkstyle {
-    toolVersion = "6.5"
-}
-
-jacoco {
-    toolVersion = "0.7.5.201505241946"
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
-
-tasks.coveralls {
-    dependsOn "check"
-}
+//checkstyle {
+//    toolVersion = "6.5"
+//}
+//
+//jacoco {
+//    toolVersion = "0.7.5.201505241946"
+//}
+//
+//jacocoTestReport {
+//    reports {
+//        xml.enabled = true
+//        html.enabled = true
+//    }
+//}
+//
+//tasks.coveralls {
+//    dependsOn "check"
+//}
