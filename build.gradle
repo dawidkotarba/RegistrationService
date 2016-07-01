@@ -21,8 +21,10 @@ subprojects {
     apply plugin: "spring-boot"
     apply plugin: "io.spring.dependency-management"
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    ext {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
     repositories {
         mavenCentral()
@@ -36,7 +38,7 @@ subprojects {
     dependencies {
         // Spring
         compile "org.scala-lang:scala-library:${scalaVeresion}"
-        compile "org.springframework.boot:spring-boot-starter"
+        compile("org.springframework.boot:spring-boot-starter-web")
         compile "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
         compile "org.springframework.cloud:spring-cloud-starter-eureka"
         testCompile "org.springframework.boot:spring-boot-starter-test"
