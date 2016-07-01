@@ -1,15 +1,3 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0"
-
-    }
-}
-
 jar {
     baseName = "ServiceDiscovery"
     version = "0.0.1-SNAPSHOT"
