@@ -3,6 +3,10 @@ jar {
     version = "0.0.1-SNAPSHOT"
 }
 
+springBoot {
+    mainClass = "dawid.kotarba.discovery.ServiceDiscovery"
+}
+
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.BUILD-SNAPSHOT"
