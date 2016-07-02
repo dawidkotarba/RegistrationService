@@ -16,5 +16,6 @@ dependencyManagement {
 }
 
 dependencies {
+    compile project(':SharedModule')
     compile "org.springframework.cloud:spring-cloud-starter-eureka-server"
 }
