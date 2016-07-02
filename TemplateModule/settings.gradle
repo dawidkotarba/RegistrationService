@@ -1,0 +1,2 @@
+include ":SharedModule"
+project(":SharedModule").projectDir = new File(settingsDir, "../SharedModule")
