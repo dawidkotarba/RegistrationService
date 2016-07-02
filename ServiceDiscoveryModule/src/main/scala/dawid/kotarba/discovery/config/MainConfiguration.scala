@@ -1,7 +1,6 @@
 package dawid.kotarba.discovery.config
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer
 import org.springframework.context.annotation.{ComponentScan, Configuration}
 
@@ -13,6 +12,4 @@ import org.springframework.context.annotation.{ComponentScan, Configuration}
 @EnableAutoConfiguration
 @ComponentScan(Array("dawid.kotarba"))
 @EnableEurekaServer
-class MainConfiguration {
-
-}
+class MainConfiguration
