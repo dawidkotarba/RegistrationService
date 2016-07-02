@@ -1,6 +1,6 @@
 package dawid.kotarba.users
 
-import dawid.kotarba.users.config.MainConfiguration
+import dawid.kotarba.users.config.MainConfig
 import org.springframework.boot.SpringApplication
 
 /**
@@ -8,5 +8,5 @@ import org.springframework.boot.SpringApplication
   */
 
 object UsersModule extends App {
-  SpringApplication.run(classOf[MainConfiguration])
+  SpringApplication.run(classOf[MainConfig])
 }
