@@ -10,7 +10,7 @@ import org.springframework.context.annotation.{ComponentScan, Configuration}
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan
+@ComponentScan(Array("dawid.kotarba"))
 @EnableEurekaClient
 class MainConfiguration {
 

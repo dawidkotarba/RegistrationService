@@ -7,6 +7,10 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        maven { url "https://repo.spring.io/release/" }
+        maven { url "http://repo.spring.io/libs-snapshot-local" }
+        maven { url "http://repo.spring.io/libs-milestone-local" }
+        maven { url "http://repo.spring.io/libs-release-local" }
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
@@ -18,6 +22,9 @@ buildscript {
 subprojects {
 
     apply plugin: "scala"
+    apply plugin: "checkstyle"
+    apply plugin: "com.github.kt3k.coveralls"
+    apply plugin: "jacoco"
     apply plugin: "io.spring.dependency-management"
 
     ext {
@@ -34,7 +41,7 @@ subprojects {
     repositories {
         mavenCentral()
         jcenter()
-        maven { url 'https://repo.spring.io/release/' }
+        maven { url "https://repo.spring.io/release/" }
         maven { url "http://repo.spring.io/libs-snapshot-local" }
         maven { url "http://repo.spring.io/libs-milestone-local" }
         maven { url "http://repo.spring.io/libs-release-local" }
@@ -51,5 +58,24 @@ subprojects {
         // Swagger
         compile "io.springfox:springfox-swagger2:${swaggerVersion}"
         compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
+    }
+
+    checkstyle {
+        toolVersion = "6.5"
+    }
+
+    jacoco {
+        toolVersion = "0.7.5.201505241946"
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+            html.enabled = true
+        }
+    }
+
+    tasks.coveralls {
+        dependsOn "check"
     }
 }

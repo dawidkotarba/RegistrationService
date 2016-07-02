@@ -1,42 +1,14 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-    dependencies {
-        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0"
-    }
-}
-
 apply plugin: "spring-boot"
-apply plugin: "com.github.kt3k.coveralls"
-apply plugin: "checkstyle"
-apply plugin: "jacoco"
 
 jar {
     baseName = "UsersModule"
     version = "0.0.1-SNAPSHOT"
 }
 
+dependencies {
+    compile project(':SharedModule')
+}
+
 springBoot {
     mainClass = "dawid.kotarba.users.UsersModule"
-}
-
-checkstyle {
-    toolVersion = "6.5"
-}
-
-jacoco {
-    toolVersion = "0.7.5.201505241946"
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
-
-tasks.coveralls {
-    dependsOn "check"
 }
