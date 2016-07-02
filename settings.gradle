@@ -1,1 +1,1 @@
-include "ServiceDiscoveryModule", "UsersModule"
+include "SharedModule", "ServiceDiscoveryModule", "UsersModule"

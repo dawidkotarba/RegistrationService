@@ -18,12 +18,17 @@ buildscript {
 subprojects {
 
     apply plugin: "scala"
-    apply plugin: "spring-boot"
     apply plugin: "io.spring.dependency-management"
 
     ext {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-netflix:1.1.2.RELEASE"
+        }
     }
 
     repositories {

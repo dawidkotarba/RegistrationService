@@ -3,6 +3,8 @@ jar {
     version = "0.0.1-SNAPSHOT"
 }
 
+apply plugin: "spring-boot"
+
 springBoot {
     mainClass = "dawid.kotarba.discovery.ServiceDiscovery"
 }

@@ -8,6 +8,7 @@ buildscript {
     }
 }
 
+apply plugin: "spring-boot"
 apply plugin: "com.github.kt3k.coveralls"
 apply plugin: "checkstyle"
 apply plugin: "jacoco"
@@ -19,12 +20,6 @@ jar {
 
 springBoot {
     mainClass = "dawid.kotarba.users.UsersModule"
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-netflix:1.1.2.RELEASE"
-    }
 }
 
 checkstyle {
