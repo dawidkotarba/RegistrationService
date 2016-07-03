@@ -1,0 +1,14 @@
+apply plugin: "spring-boot"
+
+jar {
+    baseName = "AuthenticationModule"
+    version = "0.0.1-SNAPSHOT"
+}
+
+dependencies {
+    compile project(':SharedModule')
+}
+
+springBoot {
+    mainClass = "dawid.kotarba.authentication.AuthenticationModule"
+}

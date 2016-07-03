@@ -1,1 +1,1 @@
-include ":SharedModule", ":ServiceDiscoveryModule", ":UsersModule"
+include ":SharedModule", ":ServiceDiscoveryModule", ":AuthenticationModule", ":UsersModule"

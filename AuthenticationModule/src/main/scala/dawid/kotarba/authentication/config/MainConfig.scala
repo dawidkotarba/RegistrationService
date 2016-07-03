@@ -1,4 +1,4 @@
-package dawid.kotarba.template.config
+package dawid.kotarba.authentication.config
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.{ComponentScan, Configuration}

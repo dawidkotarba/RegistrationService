@@ -1,4 +1,4 @@
-package dawid.kotarba.template.config
+package dawid.kotarba.authentication.config
 
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 import org.springframework.context.annotation.{Configuration, Profile}
