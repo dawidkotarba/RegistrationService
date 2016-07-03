@@ -1,12 +1,26 @@
 apply plugin: "spring-boot"
 
+ext {
+    queryDslVersion = "3.7.4"
+    h2DbVersion = "1.4.192"
+    ehCacheVersion = "2.6.11"
+}
+
 jar {
     baseName = "UsersModule"
     version = "0.0.1-SNAPSHOT"
 }
 
 dependencies {
-    compile project(':SharedModule')
+    compile project(":SharedModule")
+
+    // db
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "com.h2database:h2:${h2DbVersion}"
+    compile "net.sf.ehcache:ehcache-core:${ehCacheVersion}"
+    compile "com.mysema.querydsl:querydsl-jpa:${queryDslVersion}"
+    compile "com.mysema.querydsl:querydsl-apt:${queryDslVersion}:jpa"
+
 }
 
 springBoot {
