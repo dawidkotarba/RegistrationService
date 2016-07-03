@@ -1,13 +1,12 @@
 package dawid.kotarba.users.config
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-import org.springframework.context.annotation.{ComponentScan, Configuration}
+import dawid.kotarba.shared.annotation.SpringBootConfiguration
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 
 /**
   * Created by Dawid on 01.07.2016.
   */
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan(Array("dawid.kotarba"))
+@SpringBootConfiguration
+@EnableEurekaClient
 class MainConfig
