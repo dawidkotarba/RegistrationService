@@ -12,3 +12,11 @@ dependencies {
 springBoot {
     mainClass = "dawid.kotarba.template.TemplateModule"
 }
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", createCommonProperties())
+}
+
+classes {
+    dependsOn createPropertiesFile
+}

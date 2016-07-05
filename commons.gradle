@@ -1,0 +1,21 @@
+ext {
+    storeProperties = { buildDir, propertiesFile ->
+        def path = new File(buildDir + "/resources/main/application.properties")
+        propertiesFile.store(path.newWriter(), null)
+    }
+
+    createCommonProperties = { ->
+        Properties props = new Properties()
+        props.setProperty('spring.application.name', applicationName)
+        props.setProperty('spring.profiles.active', activeProfile)
+        props.setProperty('server.port', serverPort)
+        props.setProperty('eureka.client.serviceUrl.defaultZone', "http://${eurekaIpAddress}:${eurekaServerPort}/eureka/")
+        return props
+    }
+}
+
+//
+//eureka:
+//client:
+//serviceUrl:
+//defaultZone:

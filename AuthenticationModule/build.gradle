@@ -12,3 +12,11 @@ dependencies {
 springBoot {
     mainClass = "dawid.kotarba.authentication.AuthenticationModule"
 }
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", createCommonProperties())
+}
+
+classes {
+    dependsOn createPropertiesFile
+}

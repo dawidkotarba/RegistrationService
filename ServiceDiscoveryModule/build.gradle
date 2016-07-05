@@ -19,3 +19,20 @@ dependencies {
     compile project(':SharedModule')
     compile "org.springframework.cloud:spring-cloud-starter-eureka-server"
 }
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", decorateCommonProperties())
+}
+
+def decorateCommonProperties() {
+    def props = createCommonProperties()
+    props.setProperty('eureka.client.registerWithEureka', "false")
+    props.setProperty('eureka.client.fetchRegistry', "false")
+    props.setProperty('eureka.server.waitTimeInMsWhenSyncEmpty', "0")
+    return props
+}
+
+classes {
+    dependsOn createPropertiesFile
+}
+

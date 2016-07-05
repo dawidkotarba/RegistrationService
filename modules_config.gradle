@@ -1,0 +1,38 @@
+allprojects {
+    ext {
+        // Java
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+
+        // Spring
+        activeProfile = "default"
+
+        // Eureka Service Discovery
+        eurekaIpAddress = "127.0.0.1"
+        eurekaServerPort = "8080"
+    }
+}
+
+project(":ServiceDiscoveryModule") {
+    ext {
+        applicationName = "ServiceDiscoveryModule"
+        serverPort = eurekaServerPort
+        jmxServerPort = "9090"
+    }
+}
+
+project(":AuthenticationModule") {
+    ext {
+        applicationName = "AuthenticationModule"
+        serverPort = "8081"
+        jmxServerPort = "9091"
+    }
+}
+
+project(":UsersModule") {
+    ext {
+        applicationName = "UsersModule"
+        serverPort = "8082"
+        jmxServerPort = "9092"
+    }
+}

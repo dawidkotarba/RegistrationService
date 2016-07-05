@@ -26,3 +26,11 @@ dependencies {
 springBoot {
     mainClass = "dawid.kotarba.users.UsersModule"
 }
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", createCommonProperties())
+}
+
+classes {
+    dependsOn createPropertiesFile
+}
