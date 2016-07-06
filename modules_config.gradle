@@ -5,7 +5,7 @@ allprojects {
         targetCompatibility = 1.8
 
         // Spring
-        activeProfile = "default"
+        activeProfile = "prod"
 
         // Eureka Service Discovery
         eurekaIpAddress = "127.0.0.1"
