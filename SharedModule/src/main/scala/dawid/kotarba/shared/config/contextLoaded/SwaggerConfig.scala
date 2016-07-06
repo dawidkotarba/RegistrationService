@@ -1,4 +1,4 @@
-package dawid.kotarba.users.config
+package dawid.kotarba.shared.config.contextLoaded
 
 import org.springframework.context.annotation.{Configuration, Profile}
 import springfox.documentation.builders.{PathSelectors, RequestHandlerSelectors}
