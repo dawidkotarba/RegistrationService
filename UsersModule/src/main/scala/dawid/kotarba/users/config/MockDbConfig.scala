@@ -27,10 +27,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 class MockDbConfig {
 
   @Value("classpath:db_create.sql")
-  var h2DbCreateScript: Resource = null
+  val h2DbCreateScript: Resource = null
 
   @Value("classpath:db_data_init.sql")
-  var h2DbDataInitScript: Resource = null
+  val h2DbDataInitScript: Resource = null
 
   @Bean
   def dataSource(env: Environment): DataSource = {
@@ -43,7 +43,7 @@ class MockDbConfig {
 
   @Bean
   def h2servletRegistration(): ServletRegistrationBean = {
-    val registrationBean = new ServletRegistrationBean(new WebServlet())
+    val registrationBean = new ServletRegistrationBean(new WebServlet)
     registrationBean.addUrlMappings("/db/*")
     registrationBean
   }
@@ -51,14 +51,14 @@ class MockDbConfig {
   @Bean
   @Autowired
   def dataSourceInitializer(dataSource: DataSource): DataSourceInitializer = {
-    val initializer = new DataSourceInitializer()
+    val initializer = new DataSourceInitializer
     initializer.setDataSource(dataSource)
-    initializer.setDatabasePopulator(databasePopulator())
+    initializer.setDatabasePopulator(databasePopulator)
     initializer
   }
 
   private def databasePopulator(): DatabasePopulator = {
-    val populator = new ResourceDatabasePopulator()
+    val populator = new ResourceDatabasePopulator
     populator.addScript(h2DbCreateScript)
     populator.addScript(h2DbDataInitScript)
     populator
@@ -67,14 +67,14 @@ class MockDbConfig {
 
   @Bean
   def transactionManager(entityManagerFactory: EntityManagerFactory): PlatformTransactionManager = {
-    val transactionManager = new JpaTransactionManager()
+    val transactionManager = new JpaTransactionManager
     transactionManager.setEntityManagerFactory(entityManagerFactory)
     transactionManager
   }
 
   @Bean
   def entityManagerFactory(env: Environment): LocalContainerEntityManagerFactoryBean = {
-    val vendorAdapter = new HibernateJpaVendorAdapter()
+    val vendorAdapter = new HibernateJpaVendorAdapter
     vendorAdapter.setGenerateDdl(true)
     vendorAdapter.setShowSql(true)
 
@@ -83,13 +83,13 @@ class MockDbConfig {
     factory.setPackagesToScan("dawid.kotarba.users")
     factory.setDataSource(dataSource(env))
 
-    factory.setJpaProperties(jpaProperties())
-    factory.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver())
+    factory.setJpaProperties(jpaProperties)
+    factory.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver)
     factory
   }
 
   private def jpaProperties(): Properties = {
-    val props = new Properties()
+    val props = new Properties
     props.put("hibernate.show_sql", "true")
     props.put("hibernate.format_sql", "true")
     props

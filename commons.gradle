@@ -13,9 +13,3 @@ ext {
         return props
     }
 }
-
-//
-//eureka:
-//client:
-//serviceUrl:
-//defaultZone:
