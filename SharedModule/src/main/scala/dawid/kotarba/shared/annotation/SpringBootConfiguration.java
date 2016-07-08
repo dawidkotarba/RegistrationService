@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -15,6 +16,7 @@ import java.lang.annotation.RetentionPolicy;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan("dawid.kotarba")
+@Documented
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SpringBootConfiguration {
 

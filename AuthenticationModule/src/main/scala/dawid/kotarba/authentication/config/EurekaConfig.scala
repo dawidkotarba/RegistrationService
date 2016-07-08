@@ -8,5 +8,5 @@ import org.springframework.context.annotation.{Configuration, Profile}
   */
 @Configuration
 @EnableEurekaClient
-@Profile(Array("default"))
+@Profile(Array("dev", "prod"))
 class EurekaConfig

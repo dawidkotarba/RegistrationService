@@ -14,6 +14,9 @@ buildscript {
         h2DbVersion = "1.4.192"
         ehCacheVersion = "2.6.11"
 
+        // utils
+        guavaVersion = "19.0"
+
         // reports
         jacocoVersion = "0.7.6.201602180812"
         coverallsVersion = "2.4.0"
@@ -78,6 +81,9 @@ subprojects {
         // Swagger
         compile "io.springfox:springfox-swagger2:${swaggerVersion}"
         compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
+
+        // utils
+        compile "com.google.guava:guava:${guavaVersion}"
 
         // test
         testCompile "org.springframework.boot:spring-boot-starter-test"

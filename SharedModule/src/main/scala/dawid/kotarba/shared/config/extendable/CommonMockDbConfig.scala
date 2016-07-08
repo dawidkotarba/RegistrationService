@@ -20,10 +20,7 @@ import org.springframework.transaction.PlatformTransactionManager
 /**
   * Created by Dawid on 03.07.2016.
   */
-
-// to be annotated by the child class:
-//@Configuration
-//@EnableTransactionManagement
+// children to be annotated by @DatabaseConfiguration
 trait CommonMockDbConfig {
 
   @Value("classpath:db_create.sql")
@@ -32,19 +29,21 @@ trait CommonMockDbConfig {
   @Value("classpath:db_data_init.sql")
   val h2DbDataInitScript: Resource = null
 
+  val dbContextPath = "/db/*"
+
   @Bean
   def dataSource(env: Environment): DataSource = {
     new EmbeddedDatabaseBuilder()
       .setType(EmbeddedDatabaseType.H2)
       .addScript("db_create.sql")
       .addScript("db_data_init.sql")
-      .build()
+      .build
   }
 
   @Bean
   def h2servletRegistration(): ServletRegistrationBean = {
     val registrationBean = new ServletRegistrationBean(new WebServlet)
-    registrationBean.addUrlMappings("/db/*")
+    registrationBean.addUrlMappings(dbContextPath)
     registrationBean
   }
 
