@@ -7,5 +7,4 @@ import dawid.kotarba.users.dto.UserDto
   */
 trait UserDao {
   def findByUsername(username: String): Option[UserDto]
-
 }
