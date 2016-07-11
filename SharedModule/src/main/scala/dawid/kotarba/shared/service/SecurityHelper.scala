@@ -8,7 +8,7 @@ import org.springframework.util.DigestUtils
   */
 object SecurityHelper {
 
-  def disableCsrf(http: HttpSecurity): Unit = {
+  def disableCsrfAndFrameOptions(http: HttpSecurity): Unit = {
     http.csrf.disable
     http.headers.frameOptions.disable
   }

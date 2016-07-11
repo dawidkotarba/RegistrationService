@@ -8,14 +8,18 @@ allprojects {
         activeProfile = "prod"
 
         // Eureka Service Discovery
-        eurekaIpAddress = "127.0.0.1"
+        eurekaIpAddress = "localhost"
         eurekaServerPort = "8080"
+
+        // OAuth2 token endpoint
+        oauthServerIpAddress = "localhost"
+        oauthServerPort = "8081"
     }
 }
 
 project(":ServiceDiscoveryModule") {
     ext {
-        applicationName = "ServiceDiscoveryModule"
+        applicationName = "Service_Discovery_Module"
         serverPort = eurekaServerPort
         jmxServerPort = "9090"
     }
@@ -23,15 +27,15 @@ project(":ServiceDiscoveryModule") {
 
 project(":AuthenticationModule") {
     ext {
-        applicationName = "AuthenticationModule"
-        serverPort = "8081"
+        applicationName = "Authentication_Module"
+        serverPort = oauthServerPort
         jmxServerPort = "9091"
     }
 }
 
 project(":UsersModule") {
     ext {
-        applicationName = "UsersModule"
+        applicationName = "Users_Module"
         serverPort = "8082"
         jmxServerPort = "9092"
     }

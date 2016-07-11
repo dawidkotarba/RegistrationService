@@ -4,7 +4,7 @@ buildscript {
     ext {
         springBootVersion = "1.3.5.RELEASE"
         scalaVeresion = "2.11.8"
-        swaggerVersion = "2.0.2"
+        swaggerVersion = "2.5.0"
 
         // testing
         mockitoVersion = "1.10.19"

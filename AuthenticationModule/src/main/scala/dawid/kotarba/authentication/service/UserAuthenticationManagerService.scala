@@ -1,8 +1,7 @@
-package dawid.kotarba.authentication.service.impl
+package dawid.kotarba.authentication.service
 
-import dawid.kotarba.authentication.service.AuthenticationService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.authentication.{AuthenticationManager, UsernamePasswordAuthenticationToken}
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Service
 import org.springframework.util.StringUtils
@@ -13,8 +12,8 @@ import org.springframework.web.client.RestTemplate
   */
 
 @Service
-class DefaultAuthenticationService @Autowired()(private val restTemplate: RestTemplate)
-  extends AuthenticationService {
+class UserAuthenticationManagerService @Autowired()(private val restTemplate: RestTemplate)
+  extends AuthenticationManager {
 
   override def authenticate(authentication: Authentication): Authentication = {
     val username = authentication.getPrincipal.toString
@@ -23,13 +22,13 @@ class DefaultAuthenticationService @Autowired()(private val restTemplate: RestTe
     if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
       throw new IllegalArgumentException // TODO: create a custom exception
     }
-
-//    val user = userDao.findByUsername(username)
-//
-//    if (user == null || !password.equals(user.password)) {
-//      throw new IllegalArgumentException // TODO: create a custom exception
-//    }
-
+    //
+    //    val user = userDao.findByUsername(username)
+    //
+    //    if (user == null || !password.equals(user.password)) {
+    //      throw new IllegalArgumentException // TODO: create a custom exception
+    //    }
+    //
     new UsernamePasswordAuthenticationToken(username, password, authentication.getAuthorities)
   }
 }
