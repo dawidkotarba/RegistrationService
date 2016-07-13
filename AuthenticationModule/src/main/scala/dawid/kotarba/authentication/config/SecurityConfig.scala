@@ -1,7 +1,7 @@
 package dawid.kotarba.authentication.config
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.{Bean, Configuration}
+import org.springframework.context.annotation.{Bean, Configuration, Profile}
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
   */
 
 @Configuration
+@Profile(Array("dev", "prod"))
 class SecurityConfig extends WebSecurityConfigurerAdapter {
   override def configure(http: HttpSecurity): Unit = {
     http.authorizeRequests.anyRequest.permitAll
@@ -23,6 +24,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 @Configuration
+@Profile(Array("dev", "prod"))
 @EnableAuthorizationServer
 class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
