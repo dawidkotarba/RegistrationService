@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.exceptions
+package dawid.kotarba.shared.model.exceptions
 
 /**
   * Created by Dawid on 12.07.2016.

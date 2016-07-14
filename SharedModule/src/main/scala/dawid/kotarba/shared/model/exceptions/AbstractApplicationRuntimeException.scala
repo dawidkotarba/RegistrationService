@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.exceptions
+package dawid.kotarba.shared.model.exceptions
 
 import java.time.LocalDateTime
 import java.util.UUID
@@ -6,19 +6,19 @@ import java.util.UUID
 /**
   * Created by Dawid on 12.07.2016.
   */
-abstract class AbstractApplicationRuntimeException(exceptionType: ExceptionType.Value, message: String, cause: Throwable)
+abstract class AbstractApplicationRuntimeException(val exceptionType: ExceptionType.Value, val message: String, val cause: Throwable)
   extends RuntimeException(message, cause) {
 
-  val uuid: UUID = UUID.randomUUID
+  val uuid = UUID.randomUUID
   val timestamp = LocalDateTime.now
-  val params: Array[String]
+  var parameters = Seq[String]()
 
   def this(exceptionType: ExceptionType.Value, message: String) = this(exceptionType, message, null)
 
   def this(exceptionType: ExceptionType.Value, cause: Throwable) = this(exceptionType, null, cause)
 
   def addParams(params: String*): AbstractApplicationRuntimeException = {
-    this.params ++ params
+    parameters ++= params
     this
   }
 }

@@ -1,13 +1,11 @@
 package dawid.kotarba.authentication.config
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
+import dawid.kotarba.shared.annotation.SpringBootConfiguration
 import org.springframework.context.annotation.{ComponentScan, Configuration}
 
 /**
   * Created by Dawid on 01.07.2016.
   */
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan(Array("dawid.kotarba"))
+@SpringBootConfiguration
 class MainConfig

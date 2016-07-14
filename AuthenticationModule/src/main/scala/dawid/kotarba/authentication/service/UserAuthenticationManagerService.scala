@@ -1,5 +1,6 @@
 package dawid.kotarba.authentication.service
 
+import dawid.kotarba.shared.model.exceptions.impl.NotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.{AuthenticationManager, UsernamePasswordAuthenticationToken}
 import org.springframework.security.core.Authentication
@@ -20,15 +21,16 @@ class UserAuthenticationManagerService @Autowired()(private val restTemplate: Re
     val password = authentication.getCredentials.toString
 
     if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-      throw new IllegalArgumentException // TODO: create a custom exception
+      throw new NotFoundException("Cannot find user: " + username)
     }
-    //
-    //    val user = userDao.findByUsername(username)
-    //
-    //    if (user == null || !password.equals(user.password)) {
-    //      throw new IllegalArgumentException // TODO: create a custom exception
-    //    }
-    //
-    new UsernamePasswordAuthenticationToken(username, password, authentication.getAuthorities)
+
+    throw new NotFoundException("Cannot find user: " + username)
+//        val user = userDao.findByUsername(username)
+
+//        if (user == null || !password.equals(user.password)) {
+//          throw new IllegalArgumentException // TODO: create a custom exception
+//        }
+
+//    new UsernamePasswordAuthenticationToken(username, password, authentication.getAuthorities)
   }
 }
