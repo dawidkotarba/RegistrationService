@@ -12,10 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.{EnableW
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
   override def configure(http: HttpSecurity): Unit = {
-    http.authorizeRequests().antMatchers("/*").permitAll()
+    http.authorizeRequests.antMatchers("/*").permitAll
 
     // h2 console csrf disable
-    http.csrf().disable()
-    http.headers().frameOptions().disable()
+    http.csrf.disable
+    http.headers.frameOptions.disable
   }
 }
