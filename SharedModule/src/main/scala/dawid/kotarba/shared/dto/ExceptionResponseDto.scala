@@ -5,12 +5,14 @@ import java.util.UUID
 
 import dawid.kotarba.shared.model.exceptions.ExceptionType
 
+import scala.beans.BeanProperty
+
 
 /**
   * Created by Dawid on 14.07.2016.
   */
-case class ExceptionResponseDto(uUID: UUID, exceptionType: ExceptionType.Value,
-                                timestamp: LocalDateTime, userMessage: String,
-                                devMessage: String, validationErrors: List[ValidationError])
+case class ExceptionResponseDto(@BeanProperty uuid: UUID, @BeanProperty exceptionType: ExceptionType.Value,
+                                @BeanProperty timestamp: LocalDateTime, @BeanProperty userMessage: String,
+                                @BeanProperty devMessage: String, @BeanProperty validationErrors: List[ValidationError])
 
-case class ValidationError(fieldName: String, message: String)
+case class ValidationError(@BeanProperty fieldName: String, @BeanProperty message: String)
