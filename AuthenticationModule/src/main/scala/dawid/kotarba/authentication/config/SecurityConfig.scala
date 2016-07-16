@@ -16,7 +16,6 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
   */
 
 @Configuration
-@Profile(Array("dev", "prod"))
 class SecurityConfig extends WebSecurityConfigurerAdapter {
   override def configure(http: HttpSecurity): Unit = {
     http.authorizeRequests.anyRequest.permitAll
@@ -24,7 +23,6 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 @Configuration
-@Profile(Array("dev", "prod"))
 @EnableAuthorizationServer
 class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
 

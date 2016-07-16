@@ -1,19 +1,21 @@
 package dawid.kotarba.authentication.service
 
+import dawid.kotarba.authentication.dto.UserDto
 import dawid.kotarba.shared.model.exceptions.impl.NotFoundException
+import dawid.kotarba.shared.service.RestTemplateService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpMethod
 import org.springframework.security.authentication.{AuthenticationManager, UsernamePasswordAuthenticationToken}
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Service
 import org.springframework.util.StringUtils
-import org.springframework.web.client.RestTemplate
 
 /**
   * Created by Dawid on 06.07.2016.
   */
 
 @Service
-class UserAuthenticationManagerService @Autowired()(private val restTemplate: RestTemplate)
+class UserAuthenticationManagerService @Autowired()(private val restTemplateService: RestTemplateService)
   extends AuthenticationManager {
 
   override def authenticate(authentication: Authentication): Authentication = {
@@ -24,13 +26,14 @@ class UserAuthenticationManagerService @Autowired()(private val restTemplate: Re
       throw new NotFoundException("Cannot find user: " + username)
     }
 
-    throw new NotFoundException("Cannot find user: " + username)
-//        val user = userDao.findByUsername(username)
+    val user = restTemplateService.exchangeSync("http://localhost:8082/users/" + username, HttpMethod.GET, null, classOf[UserDto])
 
-//        if (user == null || !password.equals(user.password)) {
-//          throw new IllegalArgumentException // TODO: create a custom exception
-//        }
+    //        val user = userDao.findByUsername(username)
 
-//    new UsernamePasswordAuthenticationToken(username, password, authentication.getAuthorities)
+    //        if (user == null || !password.equals(user.password)) {
+    //          throw new IllegalArgumentException // TODO: create a custom exception
+    //        }
+
+    new UsernamePasswordAuthenticationToken(username, password, authentication.getAuthorities)
   }
 }

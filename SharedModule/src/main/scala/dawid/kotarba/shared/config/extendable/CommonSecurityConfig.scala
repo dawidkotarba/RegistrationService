@@ -1,6 +1,6 @@
 package dawid.kotarba.shared.config.extendable
 
-import dawid.kotarba.shared.service.SecurityHelper
+import dawid.kotarba.shared.utils.SecurityUtils
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.web.builders.{HttpSecurity, WebSecurity}
@@ -18,10 +18,10 @@ class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
     http.authorizeRequests.anyRequest.permitAll
 
     // TODO: remove disable csrf
-    SecurityHelper.disableCsrfAndFrameOptions(http)
+    SecurityUtils.disableCsrfAndFrameOptions(http)
   }
 
-  override def configure(web: WebSecurity): Unit = SecurityHelper.ignoreSwaggerPages(web)
+  override def configure(web: WebSecurity): Unit = SecurityUtils.ignoreSwaggerPages(web)
 }
 
 //@Configuration

@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.service
+package dawid.kotarba.shared.service.impl
 
 import java.time.LocalDateTime
 import java.util.UUID

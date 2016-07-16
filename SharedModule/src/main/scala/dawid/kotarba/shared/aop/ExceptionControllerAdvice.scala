@@ -2,7 +2,7 @@ package dawid.kotarba.shared.aop
 
 import dawid.kotarba.shared.dto.ExceptionResponseDto
 import dawid.kotarba.shared.model.exceptions.impl.{InternalErrorException, NotFoundException}
-import dawid.kotarba.shared.service.ExceptionConverterService
+import dawid.kotarba.shared.service.impl.ExceptionConverterService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.MethodArgumentNotValidException
