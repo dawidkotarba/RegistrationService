@@ -7,6 +7,11 @@ allprojects {
         // Spring
         activeProfile = "prod"
 
+        // Modules
+        serviceDiscoveryModuleName = "Service_Discovery_Module"
+        authenticationModuleName = "Authentication_Module"
+        usersModuleName = "Users_Module"
+
         // Eureka Service Discovery
         eurekaIpAddress = "localhost"
         eurekaServerPort = "8080"
@@ -19,7 +24,7 @@ allprojects {
 
 project(":ServiceDiscoveryModule") {
     ext {
-        applicationName = "Service_Discovery_Module"
+        applicationName = serviceDiscoveryModuleName
         serverPort = eurekaServerPort
         jmxServerPort = "9090"
     }
@@ -27,7 +32,7 @@ project(":ServiceDiscoveryModule") {
 
 project(":AuthenticationModule") {
     ext {
-        applicationName = "Authentication_Module"
+        applicationName = authenticationModuleName
         serverPort = oauthServerPort
         jmxServerPort = "9091"
     }
@@ -35,7 +40,7 @@ project(":AuthenticationModule") {
 
 project(":UsersModule") {
     ext {
-        applicationName = "Users_Module"
+        applicationName = usersModuleName
         serverPort = "8082"
         jmxServerPort = "9092"
     }

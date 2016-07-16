@@ -1,16 +1,25 @@
 ext {
-    storeProperties = { buildDir, propertiesFile ->
-        def path = new File(buildDir + "/resources/main/application.properties")
+    storeProperties = { buildDir, propertiesName, propertiesFile ->
+        def path = new File(buildDir + "/resources/main/" + propertiesName)
         propertiesFile.store(path.newWriter(), null)
     }
 
     createCommonProperties = { ->
         Properties props = new Properties()
-        props.setProperty('spring.application.name', applicationName)
-        props.setProperty('spring.profiles.active', activeProfile)
-        props.setProperty('server.port', serverPort)
-        props.setProperty('eureka.client.serviceUrl.defaultZone', "http://${eurekaIpAddress}:${eurekaServerPort}/eureka/")
-        props.setProperty('oauth.token.endpoint', "http://${oauthServerIpAddress}:${oauthServerPort}/oauth/check_token")
+        props.setProperty("spring.application.name", applicationName)
+        props.setProperty("spring.profiles.active", activeProfile)
+//        props.setProperty("server.contextPath", "/" + applicationName)
+        props.setProperty("server.port", serverPort)
+        props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaIpAddress}:${eurekaServerPort}/eureka/")
+        props.setProperty("oauth.token.endpoint", "http://${oauthServerIpAddress}:${oauthServerPort}/oauth/check_token")
+        return props
+    }
+
+    createModulesProperties = { ->
+        Properties props = new Properties()
+        props.setProperty("modules.serviceDiscoveryModule.name", serviceDiscoveryModuleName)
+        props.setProperty("modules.authenticationModule.name", authenticationModuleName)
+        props.setProperty("modules.usersModule.name", usersModuleName)
         return props
     }
 }

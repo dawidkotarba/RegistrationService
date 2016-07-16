@@ -21,7 +21,7 @@ dependencies {
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
-    storeProperties("$buildDir", decorateCommonProperties())
+    storeProperties("$buildDir", "application.properties", decorateCommonProperties())
 }
 
 def decorateCommonProperties() {

@@ -14,7 +14,8 @@ springBoot {
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
-    storeProperties("$buildDir", createCommonProperties())
+    storeProperties("$buildDir", "application.properties", createCommonProperties())
+    storeProperties("$buildDir", "modules.properties", createModulesProperties())
 }
 
 classes {
