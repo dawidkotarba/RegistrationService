@@ -8,4 +8,6 @@ import scala.beans.BeanProperty
 case class UserDto(@BeanProperty username: String,
                    @BeanProperty password: String,
                    @BeanProperty enabled: Boolean,
-                   @BeanProperty role: String)
+                   @BeanProperty role: String) {
+  def this() = this(null, null, false, null)
+}

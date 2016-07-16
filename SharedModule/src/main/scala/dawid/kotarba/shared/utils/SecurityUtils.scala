@@ -34,6 +34,8 @@ object SecurityUtils {
 
   def getOauthToken(): String = {
     val details = SecurityContextHolder.getContext.getAuthentication.getDetails
-    details.asInstanceOf[OAuth2AuthenticationDetails].getTokenValue
+    if (details.isInstanceOf[OAuth2AuthenticationDetails])
+      details.asInstanceOf[OAuth2AuthenticationDetails].getTokenValue
+    else ""
   }
 }
