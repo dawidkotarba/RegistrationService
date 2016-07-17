@@ -2,6 +2,7 @@ package dawid.kotarba.authentication.service
 
 import dawid.kotarba.authentication.dto.UserDto
 import dawid.kotarba.shared.service.RestTemplateService
+import dawid.kotarba.shared.service.impl.ModulesPropertiesService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cloud.client.discovery.DiscoveryClient
 import org.springframework.http.{HttpMethod, ResponseEntity}
@@ -15,7 +16,9 @@ import org.springframework.util.StringUtils
   */
 
 @Service
-class UserAuthenticationManagerService @Autowired()(val discoveryClient: DiscoveryClient, val restTemplateService: RestTemplateService)
+class UserAuthenticationManagerService @Autowired()(val discoveryClient: DiscoveryClient,
+                                                    val restTemplateService: RestTemplateService,
+                                                    val modulesPropertiesService: ModulesPropertiesService)
   extends AuthenticationManager {
 
   override def authenticate(authentication: Authentication): Authentication = {
@@ -26,9 +29,7 @@ class UserAuthenticationManagerService @Autowired()(val discoveryClient: Discove
       throw new IllegalArgumentException("Wrong credentials") // TODO: replace with custom exception
     }
 
-    // TODO: get names dynamically
-    val authenticationModuleUri = discoveryClient.getInstances("USERS_MODULE").get(0).getUri
-
+    val authenticationModuleUri = discoveryClient.getInstances(modulesPropertiesService.usersModuleName).get(0).getUri
     val response: ResponseEntity[UserDto] = restTemplateService.exchangeSync(authenticationModuleUri + "/users/" + username, HttpMethod.GET, null, classOf[UserDto])
 
     if (response.getBody == null || !(response.getBody.password == password)) {
