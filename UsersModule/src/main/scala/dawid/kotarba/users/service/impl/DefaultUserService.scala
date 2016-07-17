@@ -1,6 +1,6 @@
 package dawid.kotarba.users.service.impl
 
-import dawid.kotarba.shared.model.exceptions.impl.NotFoundException
+import dawid.kotarba.shared.exceptions.impl.NotFoundException
 import dawid.kotarba.shared.utils.PreconditionsUtils
 import dawid.kotarba.users.dao.UserDao
 import dawid.kotarba.users.dto.UserDto

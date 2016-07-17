@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.model.exceptions
+package dawid.kotarba.shared.exceptions
 
 import java.time.LocalDateTime
 import java.util.UUID

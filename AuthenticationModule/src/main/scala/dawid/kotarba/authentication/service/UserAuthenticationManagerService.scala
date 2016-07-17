@@ -1,6 +1,7 @@
 package dawid.kotarba.authentication.service
 
 import dawid.kotarba.authentication.dto.UserDto
+import dawid.kotarba.shared.exceptions.impl.BadCredentialsException
 import dawid.kotarba.shared.service.RestTemplateService
 import dawid.kotarba.shared.service.impl.ModulesPropertiesService
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,14 +27,14 @@ class UserAuthenticationManagerService @Autowired()(val discoveryClient: Discove
     val password = authentication.getCredentials.toString
 
     if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-      throw new IllegalArgumentException("Wrong credentials") // TODO: replace with custom exception
+      throw new BadCredentialsException("Username or password cannot be null")
     }
 
     val authenticationModuleUri = discoveryClient.getInstances(modulesPropertiesService.usersModuleName).get(0).getUri
     val response: ResponseEntity[UserDto] = restTemplateService.exchangeSync(authenticationModuleUri + "/users/" + username, HttpMethod.GET, null, classOf[UserDto])
 
     if (response.getBody == null || !(response.getBody.password == password)) {
-      throw new IllegalArgumentException // TODO: create a custom exception
+      throw new BadCredentialsException("Wrong username or password")
     }
 
     new UsernamePasswordAuthenticationToken(username, password, authentication.getAuthorities)

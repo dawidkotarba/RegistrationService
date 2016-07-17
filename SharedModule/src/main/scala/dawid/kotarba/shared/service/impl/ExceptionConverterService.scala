@@ -5,7 +5,7 @@ import java.util.UUID
 import java.util.function.Consumer
 
 import dawid.kotarba.shared.dto.{ExceptionResponseDto, ValidationError}
-import dawid.kotarba.shared.model.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
+import dawid.kotarba.shared.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
 import dawid.kotarba.shared.service.LocalizationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

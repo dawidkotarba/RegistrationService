@@ -1,6 +1,6 @@
-package dawid.kotarba.shared.model.exceptions.impl
+package dawid.kotarba.shared.exceptions.impl
 
-import dawid.kotarba.shared.model.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
+import dawid.kotarba.shared.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
 
 /**
   * Created by Dawid on 14.07.2016.
