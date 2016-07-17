@@ -3,8 +3,6 @@ package dawid.kotarba.shared.dto
 import java.time.LocalDateTime
 import java.util.UUID
 
-import dawid.kotarba.shared.model.exceptions.ExceptionType
-
 import scala.beans.BeanProperty
 
 

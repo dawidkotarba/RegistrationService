@@ -16,6 +16,7 @@ buildscript {
 
         // utils
         guavaVersion = "19.0"
+        jacksonJsr310Version = "2.8.0"
 
         // reports
         jacocoVersion = "0.7.6.201602180812"
@@ -84,6 +85,7 @@ subprojects {
 
         // utils
         compile "com.google.guava:guava:${guavaVersion}"
+        compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonJsr310Version}"
 
         // test
         testCompile "org.springframework.boot:spring-boot-starter-test"
