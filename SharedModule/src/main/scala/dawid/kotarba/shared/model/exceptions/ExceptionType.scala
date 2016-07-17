@@ -5,5 +5,4 @@ package dawid.kotarba.shared.model.exceptions
   */
 object ExceptionType extends Enumeration {
   val NOT_FOUND, INTERNAL_ERROR = Value
-
 }

@@ -6,6 +6,8 @@ import java.util.function.Consumer
 
 import dawid.kotarba.shared.dto.{ExceptionResponseDto, ValidationError}
 import dawid.kotarba.shared.model.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
+import dawid.kotarba.shared.service.LocalizationService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.validation.{BindingResult, FieldError}
 
@@ -13,19 +15,26 @@ import org.springframework.validation.{BindingResult, FieldError}
   * Created by Dawid on 14.07.2016.
   */
 @Service
-class ExceptionConverterService {
+class ExceptionConverterService @Autowired()(localizationService: LocalizationService) {
 
   def convert(e: AbstractApplicationRuntimeException): ExceptionResponseDto =
-    ExceptionResponseDto(e.uuid, e.exceptionType, e.timestamp, "TODO", e.message, null) // TODO:  
+    ExceptionResponseDto(e.uuid, e.exceptionType.toString, e.timestamp, getLocalizedUserMessage(e.exceptionType), e.message, null)
 
   def convert(e: Exception): ExceptionResponseDto =
-    ExceptionResponseDto(UUID.randomUUID(), ExceptionType.INTERNAL_ERROR, LocalDateTime.now(), "TODO", e.getMessage, null) // TODO:
+    ExceptionResponseDto(UUID.randomUUID(), ExceptionType.INTERNAL_ERROR.toString, LocalDateTime.now(), getLocalizedUserMessage(ExceptionType.INTERNAL_ERROR), e.getMessage, null)
 
   def convert(e: Exception, bindingResult: BindingResult): ExceptionResponseDto = {
     val exceptionResponse = convert(e)
     exceptionResponse.validationErrors.::(parseBindingResult(bindingResult))
     exceptionResponse
   }
+
+  def getLocalizedUserMessage(exceptionType: ExceptionType.Value): String = getLocalizedUserMessage(exceptionType, null)
+
+  def getLocalizedUserMessage(exceptionType: ExceptionType.Value, params: Array[Object]): String = if (params != null)
+    localizationService.getMessage(exceptionType.toString, params)
+  else
+    localizationService.getMessage(exceptionType.toString)
 
   private def parseBindingResult(bindingResult: BindingResult): List[ValidationError] = {
     val validationErrors = List[ValidationError]()

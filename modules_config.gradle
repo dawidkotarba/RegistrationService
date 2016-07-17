@@ -6,6 +6,7 @@ allprojects {
 
         // Spring
         activeProfile = "prod"
+        defaultLocale = "en"
 
         // Modules
         serviceDiscoveryModuleName = "Service_Discovery_Module"

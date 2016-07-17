@@ -8,6 +8,7 @@ ext {
         Properties props = new Properties()
         props.setProperty("spring.application.name", applicationName)
         props.setProperty("spring.profiles.active", activeProfile)
+        props.setProperty("default.locale", defaultLocale)
 //        props.setProperty("server.contextPath", "/" + applicationName)
         props.setProperty("server.port", serverPort)
         props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaIpAddress}:${eurekaServerPort}/eureka/")
@@ -21,5 +22,12 @@ ext {
         props.setProperty("modules.authenticationModule.name", authenticationModuleName)
         props.setProperty("modules.usersModule.name", usersModuleName)
         return props
+    }
+
+    copySharedProperties = { buildDir ->
+        copy {
+            from("../SharedModule/src/main/resources")
+            into(buildDir + "/resources/main/")
+        }
     }
 }
