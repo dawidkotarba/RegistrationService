@@ -7,6 +7,7 @@ import java.util.function.Consumer
 import dawid.kotarba.shared.dto.{ExceptionResponseDto, ValidationError}
 import dawid.kotarba.shared.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
 import dawid.kotarba.shared.service.LocalizationService
+import dawid.kotarba.shared.utils.DateTimeUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.validation.{BindingResult, FieldError}
@@ -18,10 +19,12 @@ import org.springframework.validation.{BindingResult, FieldError}
 class ExceptionConverterService @Autowired()(localizationService: LocalizationService) {
 
   def convert(e: AbstractApplicationRuntimeException): ExceptionResponseDto =
-    ExceptionResponseDto(e.uuid, e.exceptionType.toString, e.timestamp, getLocalizedUserMessage(e.exceptionType), e.message, null)
+    ExceptionResponseDto(e.uuid, e.exceptionType.toString,
+      DateTimeUtils.formatDate(e.timestamp), getLocalizedUserMessage(e.exceptionType), e.message, null)
 
   def convert(e: Exception): ExceptionResponseDto =
-    ExceptionResponseDto(UUID.randomUUID(), ExceptionType.INTERNAL_ERROR.toString, LocalDateTime.now(), getLocalizedUserMessage(ExceptionType.INTERNAL_ERROR), e.getMessage, null)
+    ExceptionResponseDto(UUID.randomUUID(), ExceptionType.INTERNAL_ERROR.toString,
+      DateTimeUtils.formatDate(LocalDateTime.now()), getLocalizedUserMessage(ExceptionType.INTERNAL_ERROR), e.getMessage, null)
 
   def convert(e: Exception, bindingResult: BindingResult): ExceptionResponseDto = {
     val exceptionResponse = convert(e)
