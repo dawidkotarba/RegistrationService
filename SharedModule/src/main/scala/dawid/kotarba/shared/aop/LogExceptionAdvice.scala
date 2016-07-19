@@ -1,18 +1,18 @@
 package dawid.kotarba.shared.aop
 
 import java.lang.invoke.MethodHandles
+import javax.inject.Named
 
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.{AfterThrowing, Aspect, Pointcut}
 import org.slf4j.LoggerFactory
-import org.springframework.stereotype.Component
 
 /**
   * Created by Dawid on 19.07.2016.
   */
 
 @Aspect
-@Component
+@Named
 class LogExceptionAdvice {
 
   val log = LoggerFactory.getLogger((MethodHandles.lookup.lookupClass()))

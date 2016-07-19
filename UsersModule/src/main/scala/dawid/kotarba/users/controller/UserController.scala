@@ -1,8 +1,9 @@
 package dawid.kotarba.users.controller
 
+import javax.inject.Inject
+
 import dawid.kotarba.users.dto.UserDto
 import dawid.kotarba.users.service.UserService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation._
 
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation._
 
 @RestController
 @RequestMapping(value = Array("/users"), produces = Array(MediaType.APPLICATION_JSON_VALUE))
-class UserController @Autowired()(private val userService: UserService) {
+class UserController @Inject()(private val userService: UserService) {
 
   @RequestMapping(value = Array("/{username}"), method = Array(RequestMethod.GET))
   def getUserByUsername(@PathVariable username: String): UserDto =

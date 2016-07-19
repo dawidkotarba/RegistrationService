@@ -1,9 +1,10 @@
 package dawid.kotarba.shared.aop
 
+import javax.inject.Inject
+
 import dawid.kotarba.shared.dto.ExceptionResponseDto
 import dawid.kotarba.shared.exceptions.impl.{InternalErrorException, NotFoundException}
 import dawid.kotarba.shared.service.impl.ExceptionConverterService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.{ControllerAdvice, ExceptionHandler, ResponseBody, ResponseStatus}
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.{ControllerAdvice, ExceptionHandl
   */
 
 @ControllerAdvice
-class ExceptionControllerAdvice @Autowired()(val exceptionConverterService: ExceptionConverterService) {
+class ExceptionControllerAdvice @Inject()(val exceptionConverterService: ExceptionConverterService) {
 
   @ExceptionHandler(value = Array(classOf[Exception]))
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

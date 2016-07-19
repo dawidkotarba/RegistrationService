@@ -1,13 +1,14 @@
 package dawid.kotarba.users.integration
 
-import dawid.kotarba.users.config.MainConfig
-import dawid.kotarba.users.dao.impl.DefaultUserDao
-import org.junit.runner.RunWith
-import org.junit.{Assert, Test}
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.SpringApplicationConfiguration
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+ import javax.inject.Inject
+
+ import dawid.kotarba.users.config.MainConfig
+ import dawid.kotarba.users.dao.impl.DefaultUserDao
+ import org.junit.runner.RunWith
+ import org.junit.{Assert, Test}
+ import org.springframework.boot.test.SpringApplicationConfiguration
+ import org.springframework.test.context.ActiveProfiles
+ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 
 /**
   * Created by Dawid on 09.07.2016.
@@ -18,7 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 @ActiveProfiles(Array("test"))
 class DefaultUserDaoTest {
 
-  @Autowired
+  @Inject
   val underTest: DefaultUserDao = null
 
   @Test

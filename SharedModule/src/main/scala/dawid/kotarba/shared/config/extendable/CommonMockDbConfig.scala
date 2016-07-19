@@ -1,11 +1,12 @@
 package dawid.kotarba.shared.config.extendable
 
 import java.util.Properties
+import javax.inject.Inject
 import javax.persistence.EntityManagerFactory
 import javax.sql.DataSource
 
 import org.h2.server.web.WebServlet
-import org.springframework.beans.factory.annotation.{Autowired, Value}
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.embedded.ServletRegistrationBean
 import org.springframework.context.annotation.Bean
 import org.springframework.core.env.Environment
@@ -48,7 +49,7 @@ trait CommonMockDbConfig {
   }
 
   @Bean
-  @Autowired
+  @Inject
   def dataSourceInitializer(dataSource: DataSource): DataSourceInitializer = {
     val initializer = new DataSourceInitializer
     initializer.setDataSource(dataSource)

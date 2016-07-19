@@ -1,15 +1,16 @@
 package dawid.kotarba.authentication.config
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.{Bean, Configuration, Profile}
-import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer
-import org.springframework.security.oauth2.config.annotation.web.configuration.{AuthorizationServerConfigurerAdapter, EnableAuthorizationServer}
-import org.springframework.security.oauth2.config.annotation.web.configurers.{AuthorizationServerEndpointsConfigurer, AuthorizationServerSecurityConfigurer}
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore
+ import javax.inject.Inject
+
+ import org.springframework.context.annotation.{Bean, Configuration}
+ import org.springframework.security.authentication.AuthenticationManager
+ import org.springframework.security.config.annotation.web.builders.HttpSecurity
+ import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+ import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer
+ import org.springframework.security.oauth2.config.annotation.web.configuration.{AuthorizationServerConfigurerAdapter, EnableAuthorizationServer}
+ import org.springframework.security.oauth2.config.annotation.web.configurers.{AuthorizationServerEndpointsConfigurer, AuthorizationServerSecurityConfigurer}
+ import org.springframework.security.oauth2.provider.token.DefaultTokenServices
+ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore
 
 /**
   * Created by Dawid on 06.07.2016.
@@ -26,7 +27,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 @EnableAuthorizationServer
 class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
-  @Autowired
+  @Inject
   val authManager: AuthenticationManager = null
   val tokenStore = new InMemoryTokenStore
 

@@ -1,8 +1,5 @@
 package dawid.kotarba.template.config
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-import org.springframework.context.annotation.{ComponentScan, Configuration}
-
 /**
   * Created by Dawid on 01.07.2016.
   */

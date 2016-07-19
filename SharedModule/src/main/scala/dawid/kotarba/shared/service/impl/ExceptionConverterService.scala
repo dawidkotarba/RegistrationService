@@ -3,20 +3,19 @@ package dawid.kotarba.shared.service.impl
 import java.time.LocalDateTime
 import java.util.UUID
 import java.util.function.Consumer
+import javax.inject.{Inject, Named}
 
 import dawid.kotarba.shared.dto.{ExceptionResponseDto, ValidationError}
 import dawid.kotarba.shared.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
 import dawid.kotarba.shared.service.LocalizationService
 import dawid.kotarba.shared.utils.DateTimeUtils
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
 import org.springframework.validation.{BindingResult, FieldError}
 
 /**
   * Created by Dawid on 14.07.2016.
   */
-@Service
-class ExceptionConverterService @Autowired()(localizationService: LocalizationService) {
+@Named
+class ExceptionConverterService @Inject()(localizationService: LocalizationService) {
 
   def convert(e: AbstractApplicationRuntimeException): ExceptionResponseDto =
     ExceptionResponseDto(e.uuid, e.exceptionType.toString,
