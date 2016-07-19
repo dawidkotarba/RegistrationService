@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
   */
 @Configuration
 @EnableSwagger2
-@Profile(Array("dev", "prod"))
+@Profile(Array("!test"))
 class SwaggerConfig {
 
   def api(): Docket = {

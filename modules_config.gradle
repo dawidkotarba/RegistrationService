@@ -5,7 +5,6 @@ allprojects {
         targetCompatibility = 1.8
 
         // Spring
-        activeProfile = "prod"
         defaultLocale = "en"
 
         // Modules

@@ -5,5 +5,5 @@ package dawid.kotarba.template.config
   */
 @Configuration
 @EnableEurekaClient
-@Profile(Array("dev", "prod"))
+@Profile(Array("!test"))
 class EurekaConfig

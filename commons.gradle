@@ -12,7 +12,6 @@ ext {
     createCommonProperties = { ->
         Properties props = new Properties()
         props.setProperty("spring.application.name", applicationName)
-        props.setProperty("spring.profiles.active", activeProfile)
         props.setProperty("default.locale", defaultLocale)
 //        props.setProperty("server.contextPath", "/" + applicationName)
         props.setProperty("server.port", serverPort)
