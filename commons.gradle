@@ -1,6 +1,7 @@
 ext {
 
     def resourcesFolder = "/resources/main/"
+    def testResourcesFolder = "/resources/test/"
 
     storeProperties = { buildDir, propertiesName, propertiesFile ->
         createFolder(buildDir + resourcesFolder)
@@ -39,6 +40,13 @@ ext {
         def dir = new File(path)
         if (!dir.exists()) {
             dir.mkdirs()
+        }
+    }
+
+    copyMainPropertiesToTest = { buildDir ->
+        copy {
+            from(buildDir + resourcesFolder)
+            into(buildDir + testResourcesFolder)
         }
     }
 }
