@@ -3,14 +3,12 @@ package dawid.kotarba.shared.service.impl
 import javax.inject.Named
 
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.context.annotation.PropertySource
 
 /**
   * Created by Dawid on 17.07.2016.
   */
 
 @Named
-@PropertySource(Array("modules.properties"))
 class ModulesPropertiesService {
 
   @Value("${modules.authenticationModule.name}")
