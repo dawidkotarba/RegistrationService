@@ -1,6 +1,6 @@
 jar {
-    baseName = "ServiceDiscovery"
-    version = "0.0.1-SNAPSHOT"
+    baseName = serviceDiscoveryModuleName
+    version = jarVersion
 }
 
 apply plugin: "spring-boot"

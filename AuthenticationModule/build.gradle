@@ -1,8 +1,8 @@
 apply plugin: "spring-boot"
 
 jar {
-    baseName = "AuthenticationModule"
-    version = "0.0.1-SNAPSHOT"
+    baseName = authenticationModuleName
+    version = jarVersion
 }
 
 dependencies {

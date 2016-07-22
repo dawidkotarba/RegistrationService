@@ -1,11 +1,10 @@
 allprojects {
     ext {
-        // Java
+        // General
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
-
-        // Spring
         defaultLocale = "en"
+        jarVersion = "0.0.1-SNAPSHOT"
 
         // Modules
         serviceDiscoveryModuleName = "Service_Discovery_Module"
