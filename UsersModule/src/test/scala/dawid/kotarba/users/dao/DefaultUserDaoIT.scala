@@ -2,12 +2,11 @@ package dawid.kotarba.users.dao
 
 import javax.inject.Inject
 
-import dawid.kotarba.shared.annotation.IntegrationTest
 import dawid.kotarba.users.config.MainConfig
 import dawid.kotarba.users.dao.impl.DefaultUserDao
 import org.junit.runner.RunWith
 import org.junit.{Assert, Test}
-import org.springframework.boot.test.SpringApplicationConfiguration
+import org.springframework.boot.test.{IntegrationTest, SpringApplicationConfiguration}
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 

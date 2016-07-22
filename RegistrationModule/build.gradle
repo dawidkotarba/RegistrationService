@@ -1,0 +1,25 @@
+apply plugin: "spring-boot"
+
+jar {
+    baseName = registrationModuleName
+    version = jarVersion
+}
+
+dependencies {
+    compile project(':SharedModule')
+}
+
+springBoot {
+    mainClass = "dawid.kotarba.template.RegistrationModule"
+}
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", "application.properties", createCommonProperties())
+    storeProperties("$buildDir", "modules.properties", createModulesProperties())
+    copySharedProperties("$buildDir")
+    copyMainPropertiesToTest("$buildDir")
+}
+
+classes {
+    dependsOn createPropertiesFile
+}
