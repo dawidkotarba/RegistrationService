@@ -1,23 +1,25 @@
-package dawid.kotarba.users.integration
+package dawid.kotarba.users.dao
 
- import javax.inject.Inject
+import javax.inject.Inject
 
- import dawid.kotarba.users.config.MainConfig
- import dawid.kotarba.users.dao.impl.DefaultUserDao
- import org.junit.runner.RunWith
- import org.junit.{Assert, Test}
- import org.springframework.boot.test.SpringApplicationConfiguration
- import org.springframework.test.context.ActiveProfiles
- import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+import dawid.kotarba.shared.annotation.IntegrationTest
+import dawid.kotarba.users.config.MainConfig
+import dawid.kotarba.users.dao.impl.DefaultUserDao
+import org.junit.runner.RunWith
+import org.junit.{Assert, Test}
+import org.springframework.boot.test.SpringApplicationConfiguration
+import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 
 /**
   * Created by Dawid on 09.07.2016.
   */
 
+@IntegrationTest
 @RunWith(classOf[SpringJUnit4ClassRunner])
 @SpringApplicationConfiguration(classes = Array(classOf[MainConfig]))
 @ActiveProfiles(Array("test"))
-class DefaultUserDaoTest {
+class DefaultUserDaoIT {
 
   @Inject
   val underTest: DefaultUserDao = null
@@ -37,9 +39,4 @@ class DefaultUserDaoTest {
     Assert.assertNotNull(result.get.enabled)
     Assert.assertNotNull(result.get.role)
   }
-
-  @Test(expected = classOf[NullPointerException])
-  def findByUsernameForNull(): Unit =
-    underTest.findByUsername(null)
-
 }
