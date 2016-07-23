@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 @SpringApplicationConfiguration(classes = Array(classOf[MainConfig]))
 @ActiveProfiles(Array("test"))
 @IntegrationTest
-class RegistrationModuleTests {
+class RegistrationModuleITest {
   @Test def contextLoads {
   }
 }
