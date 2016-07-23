@@ -1,5 +1,9 @@
 allprojects {
     ext {
+
+        // Strings
+        localhost = "127.0.0.1"
+
         // General
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -13,11 +17,11 @@ allprojects {
         registrationModuleName = "Registration_Module"
 
         // Eureka Service Discovery
-        eurekaIpAddress = "localhost"
+        eurekaIpAddress = localhost
         eurekaServerPort = "8080"
 
         // OAuth2 token endpoint
-        oauthServerIpAddress = "localhost"
+        oauthServerIpAddress = localhost
         oauthServerPort = "8081"
     }
 }
@@ -26,7 +30,8 @@ project(":ServiceDiscoveryModule") {
     ext {
         applicationName = serviceDiscoveryModuleName
         serverPort = eurekaServerPort
-        jmxServerPort = "9090"
+        jmxHost = localhost
+        jmxPort = "9090"
     }
 }
 
@@ -34,7 +39,8 @@ project(":AuthenticationModule") {
     ext {
         applicationName = authenticationModuleName
         serverPort = oauthServerPort
-        jmxServerPort = "9091"
+        jmxHost = localhost
+        jmxPort = "9091"
     }
 }
 
@@ -42,7 +48,8 @@ project(":UsersModule") {
     ext {
         applicationName = usersModuleName
         serverPort = "8082"
-        jmxServerPort = "9092"
+        jmxHost = localhost
+        jmxPort = "9092"
     }
 }
 
@@ -50,6 +57,7 @@ project(":RegistrationModule") {
     ext {
         applicationName = registrationModuleName
         serverPort = "8083"
-        jmxServerPort = "9093"
+        jmxHost = localhost
+        jmxPort = "9093"
     }
 }

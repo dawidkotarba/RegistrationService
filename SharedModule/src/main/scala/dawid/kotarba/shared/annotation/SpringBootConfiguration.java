@@ -2,6 +2,7 @@ package dawid.kotarba.shared.annotation;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import java.lang.annotation.*;
 
@@ -12,6 +13,7 @@ import java.lang.annotation.*;
 
 @SpringBootApplication
 @ComponentScan("dawid.kotarba")
+@EnableWebSecurity
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
