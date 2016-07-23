@@ -8,8 +8,5 @@ jdk:
 before_install:
     - chmod +x gradlew
 
-script:
-    - ./gradlew clean build -x itest
-
 after_success:
     - ./gradlew jacocoTestReport coveralls
