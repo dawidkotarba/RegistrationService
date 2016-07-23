@@ -22,6 +22,11 @@ buildscript {
         jacocoVersion = "0.7.6.201602180812"
         coverallsVersion = "2.4.0"
         scalastyleVersion = "0.8.2"
+
+        // folders
+        srcDir = "src/main/scala"
+        testDir = "src/test/scala"
+        itestDir = "src/itest/scala"
     }
     repositories {
         mavenCentral()
@@ -95,8 +100,9 @@ subprojects {
     scalaStyle {
         configLocation = "scalastyle_config.xml"
         includeTestSourceDirectory = true
-        source = "src/main/scala"
-        testSource = "src/test/scala"
+        source = srcDir
+        testSource = testDir
+        testSource += itestDir
     }
 
     jacoco {
@@ -112,5 +118,30 @@ subprojects {
 
     tasks.coveralls {
         dependsOn "check"
+    }
+
+    configurations {
+        itestCompile.extendsFrom testCompile
+        itestRuntime.extendsFrom testRuntime
+    }
+
+    sourceSets {
+        itest {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            scala.srcDir file(itestDir)
+        }
+        test {
+            resources.srcDir file('src/itest/resources')
+        }
+    }
+
+    task itest(type: Test) {
+        testClassesDir = sourceSets.itest.output.classesDir
+        classpath = sourceSets.itest.runtimeClasspath
+
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
     }
 }

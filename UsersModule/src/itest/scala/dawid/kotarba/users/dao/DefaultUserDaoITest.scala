@@ -4,11 +4,13 @@ import javax.inject.Inject
 
 import dawid.kotarba.users.config.MainConfig
 import dawid.kotarba.users.dao.impl.DefaultUserDao
+import org.junit.Assert._
+import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.{Assert, Test}
 import org.springframework.boot.test.{IntegrationTest, SpringApplicationConfiguration}
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+
 
 /**
   * Created by Dawid on 09.07.2016.
@@ -18,7 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 @RunWith(classOf[SpringJUnit4ClassRunner])
 @SpringApplicationConfiguration(classes = Array(classOf[MainConfig]))
 @ActiveProfiles(Array("test"))
-class DefaultUserDaoIT {
+class DefaultUserDaoITest {
 
   @Inject
   val underTest: DefaultUserDao = null
@@ -32,10 +34,10 @@ class DefaultUserDaoIT {
     val result = underTest.findByUsername(username)
 
     // then:
-    Assert.assertNotNull(result.get)
-    Assert.assertEquals(username, result.get.username)
-    Assert.assertNotNull(result.get.password)
-    Assert.assertNotNull(result.get.enabled)
-    Assert.assertNotNull(result.get.role)
+    assertNotNull(result.get)
+    assertEquals(username, result.get.username)
+    assertNotNull(result.get.password)
+    assertNotNull(result.get.enabled)
+    assertNotNull(result.get.role)
   }
 }

@@ -14,7 +14,7 @@ import org.mockito.{ArgumentCaptor, Captor, Mock, MockitoAnnotations}
   */
 
 @UnitTest
-class DefaultUserDaoUT {
+class DefaultUserDaoTest {
 
   var underTest: DefaultUserDao = null
 

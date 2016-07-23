@@ -7,6 +7,6 @@ import dawid.kotarba.shared.annotation.UnitTest
   */
 
 @UnitTest
-class UserAuthenticationManagerServiceUnitTest {
+class UserAuthenticationManagerServiceTest {
 
 }
