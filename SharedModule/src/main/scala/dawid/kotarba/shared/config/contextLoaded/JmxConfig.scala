@@ -1,7 +1,7 @@
 package dawid.kotarba.shared.config.contextLoaded
 
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.context.annotation.{Bean, Configuration, DependsOn}
+import org.springframework.context.annotation.{Bean, Configuration, DependsOn, EnableMBeanExport}
 import org.springframework.jmx.support.ConnectorServerFactoryBean
 import org.springframework.remoting.rmi.RmiRegistryFactoryBean
 
@@ -10,6 +10,7 @@ import org.springframework.remoting.rmi.RmiRegistryFactoryBean
   */
 
 @Configuration
+@EnableMBeanExport
 class JmxConfig {
 
   @Value("${jmx.rmi.host}")
