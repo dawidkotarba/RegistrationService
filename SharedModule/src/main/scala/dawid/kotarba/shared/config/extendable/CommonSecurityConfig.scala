@@ -29,7 +29,7 @@ class CommonSecurityConfig extends WebSecurityConfigurerAdapter {
 class ResourceServerConfigurerConfiguration extends ResourceServerConfigurerAdapter {
 
   @Value("${oauth.token.endpoint}")
-  val oauthTokenEndpoint: java.lang.String = null
+  private val oauthTokenEndpoint: java.lang.String = null
 
   override def configure(http: HttpSecurity): Unit = http.authorizeRequests.anyRequest.authenticated
 

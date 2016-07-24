@@ -6,6 +6,7 @@ import dawid.kotarba.authentication.dto.UserDto
 import dawid.kotarba.shared.exceptions.impl.BadCredentialsException
 import dawid.kotarba.shared.service.RestTemplateService
 import dawid.kotarba.shared.service.impl.ModulesPropertiesService
+import dawid.kotarba.shared.utils.PreconditionsUtils
 import org.springframework.cloud.client.discovery.DiscoveryClient
 import org.springframework.http.{HttpMethod, ResponseEntity}
 import org.springframework.security.authentication.{AuthenticationManager, UsernamePasswordAuthenticationToken}
@@ -17,12 +18,14 @@ import org.springframework.util.StringUtils
   */
 
 @Named
-class UserAuthenticationManagerService @Inject()(val discoveryClient: DiscoveryClient,
-                                                    val restTemplateService: RestTemplateService,
-                                                    val modulesPropertiesService: ModulesPropertiesService)
+class UserAuthenticationManagerService @Inject()(private val discoveryClient: DiscoveryClient,
+                                                 private val restTemplateService: RestTemplateService,
+                                                 private val modulesPropertiesService: ModulesPropertiesService)
   extends AuthenticationManager {
 
   override def authenticate(authentication: Authentication): Authentication = {
+    PreconditionsUtils.checkNotNull(authentication, "authentication")
+
     val username = authentication.getPrincipal.toString
     val password = authentication.getCredentials.toString
 
@@ -33,7 +36,7 @@ class UserAuthenticationManagerService @Inject()(val discoveryClient: DiscoveryC
     val authenticationModuleUri = discoveryClient.getInstances(modulesPropertiesService.usersModuleName).get(0).getUri
     val response: ResponseEntity[UserDto] = restTemplateService.exchangeSync(authenticationModuleUri + "/users/" + username, HttpMethod.GET, null, classOf[UserDto])
 
-    if (response.getBody == null || !(response.getBody.password == password)) {
+    if (response == null || response.getBody == null || !(response.getBody.password == password)) {
       throw new BadCredentialsException("Wrong username or password")
     }
 

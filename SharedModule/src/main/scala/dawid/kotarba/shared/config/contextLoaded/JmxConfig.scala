@@ -14,10 +14,10 @@ import org.springframework.remoting.rmi.RmiRegistryFactoryBean
 class JmxConfig {
 
   @Value("${jmx.rmi.host}")
-  val rmiHost: String = null
+  private val rmiHost: String = null
 
   @Value("${jmx.rmi.port}")
-  val rmiPort: Integer = null
+  private val rmiPort: Integer = null
 
   @Bean
   def rmiRegistry(): RmiRegistryFactoryBean = {

@@ -25,12 +25,12 @@ import org.springframework.transaction.PlatformTransactionManager
 trait CommonMockDbConfig {
 
   @Value("classpath:db_create.sql")
-  val h2DbCreateScript: Resource = null
+  private val h2DbCreateScript: Resource = null
 
   @Value("classpath:db_data_init.sql")
-  val h2DbDataInitScript: Resource = null
+  private val h2DbDataInitScript: Resource = null
 
-  val dbContextPath = "/db/*"
+  private val dbContextPath = "/db/*"
 
   @Bean
   def dataSource(env: Environment): DataSource = {

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.i18n.{LocaleChangeInterceptor, SessionLoc
 class LocalizationConfig extends WebMvcConfigurerAdapter {
 
   @Value("${default.locale}")
-  val locale: String = null
+  private val locale: String = null
   private var defaultLocale: Locale = null
 
   @PostConstruct
