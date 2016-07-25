@@ -2,9 +2,12 @@ apply from: "modules_config.gradle"
 
 buildscript {
     ext {
-        springBootVersion = "1.3.5.RELEASE"
+        // Scala
         scalaVeresion = "2.11.8"
-        swaggerVersion = "2.5.0"
+
+        // Spring
+        springBootVersion = "1.3.5.RELEASE"
+        activeMqVersion = "1.4.0.BUILD-SNAPSHOT"
 
         // testing
         mockitoVersion = "1.10.19"
@@ -17,6 +20,7 @@ buildscript {
         // utils
         guavaVersion = "19.0"
         jacksonJsr310Version = "2.8.0"
+        swaggerVersion = "2.5.0"
 
         // reports
         jacocoVersion = "0.7.6.201602180812"
@@ -69,11 +73,16 @@ subprojects {
     }
 
     dependencies {
-        // Spring
+        // Scala
         compile "org.scala-lang:scala-library:${scalaVeresion}"
-        compile("org.springframework.boot:spring-boot-starter-web")
-        compile "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+
+        // Spring boot
+        compile "org.springframework.boot:spring-boot-starter-web"
+        compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.springframework.boot:spring-boot-starter-security"
+        compile "org.springframework.boot:spring-boot-starter-activemq:${activeMqVersion}"
+
+        // Spring
         compile "org.springframework.security.oauth:spring-security-oauth2"
         compile "org.springframework.cloud:spring-cloud-starter-eureka"
 

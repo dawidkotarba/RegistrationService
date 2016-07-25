@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.contextLoaded
+package dawid.kotarba.shared.config.beans
 
 import org.springframework.context.annotation.{Bean, Configuration}
 import org.springframework.web.client.{AsyncRestTemplate, RestTemplate}
