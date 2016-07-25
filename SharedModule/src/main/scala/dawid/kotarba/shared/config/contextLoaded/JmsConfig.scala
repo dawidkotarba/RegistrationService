@@ -1,6 +1,6 @@
 package dawid.kotarba.shared.config.contextLoaded
 
-import com.netflix.governator.annotations.Configuration
+import org.springframework.context.annotation.Configuration
 import org.springframework.jms.annotation.EnableJms
 
 /**

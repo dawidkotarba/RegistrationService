@@ -1,8 +1,8 @@
 apply plugin: "spring-boot"
 
 jar {
-    baseName = registrationModuleName
-    version = jarVersion
+    baseName = "EventBusModule"
+    version = "0.0.1-SNAPSHOT"
 }
 
 dependencies {
@@ -10,7 +10,7 @@ dependencies {
 }
 
 springBoot {
-    mainClass = "dawid.kotarba.registration.RegistrationModule"
+    mainClass = "dawid.kotarba.template.eventbusmodule"
 }
 
 task createPropertiesFile(dependsOn: processResources) << {

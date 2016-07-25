@@ -1,4 +1,4 @@
-package dawid.kotarba.template
+package dawid.kotarba.eventbus
 
 import dawid.kotarba.shared.annotation.UnitTest
 import org.junit.Test
@@ -7,7 +7,7 @@ import org.junit.Test
   * Created by Dawid on 01.07.2016.
   */
 @UnitTest
-class TemplateModuleTests {
+class EventBusModuleTests {
   @Test def contextLoads {
   }
 }
