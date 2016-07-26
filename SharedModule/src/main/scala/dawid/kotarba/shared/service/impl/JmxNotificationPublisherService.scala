@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.jmx
+package dawid.kotarba.shared.service.impl
 
 import java.util.concurrent.atomic.AtomicLong
 import javax.inject.Named
@@ -12,7 +12,7 @@ import org.springframework.jmx.export.notification.{NotificationPublisher, Notif
   */
 @Named
 @ManagedResource
-class JmxNotificationPublisher extends NotificationPublisherAware {
+class JmxNotificationPublisherService extends NotificationPublisherAware {
 
   private val notificationSequence: AtomicLong = new AtomicLong
   private var notificationPublisher: NotificationPublisher = null
