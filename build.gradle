@@ -31,6 +31,7 @@ buildscript {
         srcDir = "src/main/scala"
         testDir = "src/test/scala"
         itestDir = "src/itest/scala"
+        jacocoReportPath = "build/jacoco/jacocoTest.exec"
     }
     repositories {
         mavenCentral()
@@ -114,6 +115,13 @@ subprojects {
         testSource += itestDir
     }
 
+    test {
+        jacoco {
+            append = true
+            destinationFile = file("../${jacocoReportPath}")
+        }
+    }
+
     jacoco {
         toolVersion = "${jacocoVersion}"
     }
@@ -127,6 +135,10 @@ subprojects {
 
     tasks.coveralls {
         dependsOn "check"
+    }
+
+    coveralls {
+        jacocoReportPath = jacocoReportPath
     }
 
     configurations {
