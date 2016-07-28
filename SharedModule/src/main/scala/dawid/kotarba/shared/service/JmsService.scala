@@ -19,12 +19,19 @@ trait JmsService {
   def createProducer(session: Session, destinationType: JmsDestinationType.Value, endpointName: String): MessageProducer
 
   def close(session: Session, connection: Connection): Unit = {
-    session.close()
-    connection.close()
+    if (session != null) {
+      session.close()
+    }
+
+    if (connection != null) {
+      connection.close()
+    }
   }
 
   def close(consumer: MessageConsumer, session: Session, connection: Connection): Unit = {
-    consumer.close()
+    if (consumer != null) {
+      consumer.close()
+    }
     close(session, connection)
   }
 }
