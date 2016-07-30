@@ -1,0 +1,25 @@
+apply plugin: "spring-boot"
+
+jar {
+    baseName = "UserInterfaceModule"
+    version = "0.0.1-SNAPSHOT"
+}
+
+dependencies {
+    compile project(':SharedModule')
+}
+
+springBoot {
+    mainClass = "dawid.kotarba.ui.UserInterfaceModule"
+}
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", "application.properties", createCommonProperties())
+    storeProperties("$buildDir", "modules.properties", createModulesProperties())
+    copySharedProperties("$buildDir")
+    copyMainPropertiesToTest("$buildDir")
+}
+
+classes {
+    dependsOn createPropertiesFile
+}
