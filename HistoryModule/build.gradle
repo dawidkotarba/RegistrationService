@@ -1,7 +1,7 @@
 apply plugin: "spring-boot"
 
 jar {
-    baseName = "EventBusModule"
+    baseName = "HistoryModule"
     version = "0.0.1-SNAPSHOT"
 }
 
@@ -10,7 +10,7 @@ dependencies {
 }
 
 springBoot {
-    mainClass = "dawid.kotarba.template.eventbusmodule"
+    mainClass = "dawid.kotarba.history.HistoryModule"
 }
 
 task createPropertiesFile(dependsOn: processResources) << {

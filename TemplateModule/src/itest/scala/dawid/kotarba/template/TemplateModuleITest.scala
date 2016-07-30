@@ -7,7 +7,7 @@ package dawid.kotarba.template
 @SpringApplicationConfiguration(classes = Array(classOf[MainConfig]))
 @ActiveProfiles(Array("test"))
 @IntegrationTest
-class TemplateModuleTests {
+class TemplateModuleITest {
   @Test def contextLoads {
   }
 }

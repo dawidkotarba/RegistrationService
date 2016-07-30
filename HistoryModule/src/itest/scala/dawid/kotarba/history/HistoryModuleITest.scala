@@ -1,4 +1,4 @@
-package dawid.kotarba.eventbus
+package dawid.kotarba.history
 
 /**
   * Created by Dawid on 01.07.2016.
@@ -7,7 +7,7 @@ package dawid.kotarba.eventbus
 @SpringApplicationConfiguration(classes = Array(classOf[MainConfig]))
 @ActiveProfiles(Array("test"))
 @IntegrationTest
-class EventBusModuleTests {
+class HistoryModuleITest {
   @Test def contextLoads {
   }
 }

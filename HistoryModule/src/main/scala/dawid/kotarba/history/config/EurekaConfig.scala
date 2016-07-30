@@ -1,4 +1,4 @@
-package dawid.kotarba.eventbus.config
+package dawid.kotarba.history.config
 
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 import org.springframework.context.annotation.{Configuration, Profile}

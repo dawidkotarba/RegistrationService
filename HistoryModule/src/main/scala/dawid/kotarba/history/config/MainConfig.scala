@@ -1,4 +1,4 @@
-package dawid.kotarba.eventbus.config
+package dawid.kotarba.history.config
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.{ComponentScan, Configuration}

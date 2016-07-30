@@ -15,7 +15,7 @@ allprojects {
         authenticationModuleName = "Authentication_Module"
         usersModuleName = "Users_Module"
         registrationModuleName = "Registration_Module"
-		eventBusModuleName = "Event_Bus_Module"
+		historyModuleName = "History_Module"
 
         // Eureka Service Discovery
         eurekaIpAddress = localhost
@@ -63,9 +63,9 @@ project(":RegistrationModule") {
     }
 }
 
-project(":EventBusModule") {
+project(":HistoryModule") {
     ext {
-        applicationName = eventBusModuleName
+        applicationName = historyModuleName
         serverPort = "8084"
         jmxHost = localhost
         jmxPort = "9094"
