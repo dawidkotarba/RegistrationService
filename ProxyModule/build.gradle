@@ -1,0 +1,44 @@
+apply plugin: "spring-boot"
+
+jar {
+    baseName = "ProxyModule"
+    version = "0.0.1-SNAPSHOT"
+}
+
+dependencies {
+    compile project(":SharedModule")
+    compile "org.springframework.cloud:spring-cloud-starter-zuul"
+}
+
+springBoot {
+    mainClass = "dawid.kotarba.template.ProxyModule"
+}
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", "application.properties", decorateCommonProperties())
+    storeProperties("$buildDir", "modules.properties", createModulesProperties())
+    copySharedProperties("$buildDir")
+    copyMainPropertiesToTest("$buildDir")
+}
+
+def decorateCommonProperties() {
+    def props = createCommonProperties()
+
+    // Zuul routing
+    addZuulProperties(props, authenticationModuleName)
+    addZuulProperties(props, usersModuleName)
+    addZuulProperties(props, registrationModuleName)
+    addZuulProperties(props, historyModuleName)
+    addZuulProperties(props, userInterfaceModuleName)
+
+    return props
+}
+
+def addZuulProperties(props, moduleName) {
+    props.setProperty("zuul.routes.${moduleName}.path", "/${moduleName}/**")
+    props.setProperty("zuul.routes.${moduleName}.serviceId", moduleName)
+}
+
+classes {
+    dependsOn createPropertiesFile
+}

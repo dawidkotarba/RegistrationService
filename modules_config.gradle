@@ -11,12 +11,13 @@ allprojects {
         jarVersion = "0.0.1-SNAPSHOT"
 
         // Modules
-        serviceDiscoveryModuleName = "Service_Discovery_Module"
-        authenticationModuleName = "Authentication_Module"
-        usersModuleName = "Users_Module"
-        registrationModuleName = "Registration_Module"
-        historyModuleName = "History_Module"
-		userInterfaceModuleName = "User_Interface_Module"
+        serviceDiscoveryModuleName = "serviceDiscovery"
+        authenticationModuleName = "authentication"
+        usersModuleName = "users"
+        registrationModuleName = "registration"
+        historyModuleName = "history"
+        userInterfaceModuleName = "userInterface"
+        proxyModuleName = "proxy"
 
         // Eureka Service Discovery
         eurekaIpAddress = localhost
@@ -24,7 +25,7 @@ allprojects {
 
         // OAuth2 token endpoint
         oauthServerIpAddress = localhost
-        oauthServerPort = "8081"
+        oauthServerPort = "8082"
     }
 }
 
@@ -37,47 +38,55 @@ project(":ServiceDiscoveryModule") {
     }
 }
 
+project(":ProxyModule") {
+    ext {
+        applicationName = proxyModuleName
+        serverPort = "8081"
+        jmxHost = localhost
+        jmxPort = "9091"
+    }
+}
+
 project(":AuthenticationModule") {
     ext {
         applicationName = authenticationModuleName
         serverPort = oauthServerPort
         jmxHost = localhost
-        jmxPort = "9091"
+        jmxPort = "9092"
     }
 }
 
 project(":UsersModule") {
     ext {
         applicationName = usersModuleName
-        serverPort = "8082"
-        jmxHost = localhost
-        jmxPort = "9092"
-    }
-}
-
-project(":RegistrationModule") {
-    ext {
-        applicationName = registrationModuleName
         serverPort = "8083"
         jmxHost = localhost
         jmxPort = "9093"
     }
 }
 
-project(":HistoryModule") {
+project(":RegistrationModule") {
     ext {
-        applicationName = historyModuleName
+        applicationName = registrationModuleName
         serverPort = "8084"
         jmxHost = localhost
         jmxPort = "9094"
     }
 }
 
-project(":UserInterfaceModule") {
+project(":HistoryModule") {
     ext {
-        applicationName = userInterfaceModuleName
+        applicationName = historyModuleName
         serverPort = "8085"
         jmxHost = localhost
         jmxPort = "9095"
     }
 }
+
+project(":UserInterfaceModule") {
+    ext {
+        applicationName = userInterfaceModuleName
+        serverPort = "8086"
+        jmxHost = localhost
+        jmxPort = "9096"
+    }

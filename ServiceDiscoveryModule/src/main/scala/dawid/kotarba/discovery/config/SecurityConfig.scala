@@ -1,7 +1,7 @@
 package dawid.kotarba.discovery.config
 
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.builders.{HttpSecurity, WebSecurity}
 import org.springframework.security.config.annotation.web.configuration.{EnableWebSecurity, WebSecurityConfigurerAdapter}
 
 /**
@@ -11,11 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.{EnableW
 @Configuration
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
-  override def configure(http: HttpSecurity): Unit = {
-    http.authorizeRequests.antMatchers("/*").permitAll
+  override def configure(http: HttpSecurity): Unit =
+    http.authorizeRequests.anyRequest.permitAll
 
-    // h2 console csrf disable
-    http.csrf.disable
-    http.headers.frameOptions.disable
-  }
+  override def configure(web: WebSecurity): Unit = web.ignoring.anyRequest
 }

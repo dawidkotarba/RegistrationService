@@ -153,7 +153,7 @@ subprojects {
             scala.srcDir file(itestDir)
         }
         test {
-            resources.srcDir file('src/itest/resources')
+            resources.srcDir file("src/itest/resources")
         }
     }
 
