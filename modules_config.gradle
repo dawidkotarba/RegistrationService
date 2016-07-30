@@ -90,3 +90,4 @@ project(":UserInterfaceModule") {
         jmxHost = localhost
         jmxPort = "9096"
     }
+}
