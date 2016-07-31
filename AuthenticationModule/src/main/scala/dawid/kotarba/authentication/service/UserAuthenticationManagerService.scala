@@ -31,7 +31,7 @@ class UserAuthenticationManagerService @Inject()(private val restTemplateService
       throw new BadCredentialsException("Username or password cannot be null")
     }
 
-    val usersUrl = modulesPropertiesService.addProxyUrl(modulesPropertiesService.usersModuleName)
+    val usersUrl = modulesPropertiesService.resolveUrl(modulesPropertiesService.usersModuleName, "users")
     val response: ResponseEntity[UserDto] = restTemplateService.exchangeSync(usersUrl + username, HttpMethod.GET, null, classOf[UserDto])
 
     if (response == null || response.getBody == null || !(response.getBody.password == password)) {

@@ -28,8 +28,8 @@ allprojects {
         proxyPort = "8081"
 
         // OAuth2 token endpoint
-        oauthServerIpAddress = localhost
-        oauthServerPort = "8082"
+        oauthHost = localhost
+        oauthPort = "8082"
     }
 }
 
@@ -54,7 +54,7 @@ project(":ProxyModule") {
 project(":AuthenticationModule") {
     ext {
         applicationName = authenticationModuleName
-        serverPort = oauthServerPort
+        serverPort = oauthPort
         jmxHost = localhost
         jmxPort = "9092"
     }

@@ -15,7 +15,7 @@ ext {
         props.setProperty("jmx.rmi.port", jmxPort)
         props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaHost}:${eurekaPort}/eureka/")
         props.setProperty("proxy.url", "http://${proxyHost}:${proxyPort}")
-        props.setProperty("oauth.token.endpoint", "http://${oauthServerIpAddress}:${oauthServerPort}/oauth/check_token")
+        props.setProperty("oauth.token.endpoint", "http://${oauthHost}:${oauthPort}/oauth/check_token")
         return props
     }
 

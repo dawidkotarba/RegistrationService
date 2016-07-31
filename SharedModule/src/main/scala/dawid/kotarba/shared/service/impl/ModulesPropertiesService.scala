@@ -2,6 +2,7 @@ package dawid.kotarba.shared.service.impl
 
 import javax.inject.Named
 
+import dawid.kotarba.shared.utils.Constants
 import org.springframework.beans.factory.annotation.Value
 
 /**
@@ -23,5 +24,5 @@ class ModulesPropertiesService {
   @Value("${modules.usersModule.name}")
   val usersModuleName: String = null
 
-  def addProxyUrl(moduleName: String): String = proxyUrl + moduleName + "/"
+  def resolveUrl(moduleName: String, path: String): String = proxyUrl + Constants.SLASH + moduleName + Constants.SLASH + path + Constants.SLASH
 }
