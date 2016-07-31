@@ -11,7 +11,6 @@ import org.junit.{Before, Test}
 import org.mockito.Mockito._
 import org.mockito.{Mock, MockitoAnnotations}
 import org.springframework.cloud.client.ServiceInstance
-import org.springframework.cloud.client.discovery.DiscoveryClient
 import org.springframework.security.core.{Authentication, GrantedAuthority}
 
 /**
@@ -24,9 +23,6 @@ class UserAuthenticationManagerServiceTest {
   private var underTest: UserAuthenticationManagerService = null
 
   @Mock
-  private val discoveryClient: DiscoveryClient = null
-
-  @Mock
   private val restTemplateService: RestTemplateService = null
 
   @Mock
@@ -36,7 +32,7 @@ class UserAuthenticationManagerServiceTest {
   @Before
   def setUp(): Unit = {
     MockitoAnnotations.initMocks(this)
-    underTest = new UserAuthenticationManagerService(discoveryClient, restTemplateService, modulesPropertiesService)
+    underTest = new UserAuthenticationManagerService(restTemplateService, modulesPropertiesService)
   }
 
   @Test(expected = classOf[BadCredentialsException])
@@ -74,8 +70,6 @@ class UserAuthenticationManagerServiceTest {
 
       override def getName: String = null
     }
-
-    when(discoveryClient.getInstances(usersModuleName)).thenReturn(serviceInstances)
 
     // when:
     underTest.authenticate(authentication)

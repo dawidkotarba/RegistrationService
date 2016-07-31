@@ -20,8 +20,12 @@ allprojects {
         proxyModuleName = "proxy"
 
         // Eureka Service Discovery
-        eurekaIpAddress = localhost
-        eurekaServerPort = "8080"
+        eurekaHost = localhost
+        eurekaPort = "8080"
+
+        // Zuul proxy
+        proxyHost = localhost
+        proxyPort = "8081"
 
         // OAuth2 token endpoint
         oauthServerIpAddress = localhost
@@ -32,7 +36,7 @@ allprojects {
 project(":ServiceDiscoveryModule") {
     ext {
         applicationName = serviceDiscoveryModuleName
-        serverPort = eurekaServerPort
+        serverPort = eurekaPort
         jmxHost = localhost
         jmxPort = "9090"
     }
@@ -41,7 +45,7 @@ project(":ServiceDiscoveryModule") {
 project(":ProxyModule") {
     ext {
         applicationName = proxyModuleName
-        serverPort = "8081"
+        serverPort = proxyPort
         jmxHost = localhost
         jmxPort = "9091"
     }

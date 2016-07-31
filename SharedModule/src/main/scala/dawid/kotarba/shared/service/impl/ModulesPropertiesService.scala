@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Value
 @Named
 class ModulesPropertiesService {
 
+  @Value("${proxy.url}")
+  private val proxyUrl: String = null
+
   @Value("${modules.authenticationModule.name}")
   val authenticationModuleName: String = null
 
@@ -19,4 +22,6 @@ class ModulesPropertiesService {
 
   @Value("${modules.usersModule.name}")
   val usersModuleName: String = null
+
+  def addProxyUrl(moduleName: String): String = proxyUrl + moduleName + "/"
 }

@@ -13,11 +13,11 @@ ext {
         Properties props = new Properties()
         props.setProperty("spring.application.name", applicationName)
         props.setProperty("default.locale", defaultLocale)
-//        props.setProperty("server.contextPath", "/" + applicationName)
         props.setProperty("server.port", serverPort)
         props.setProperty("jmx.rmi.host", jmxHost)
         props.setProperty("jmx.rmi.port", jmxPort)
-        props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaIpAddress}:${eurekaServerPort}/eureka/")
+        props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaHost}:${eurekaPort}/eureka/")
+        props.setProperty("proxy.url", "http://${proxyHost}:${proxyPort}")
         props.setProperty("oauth.token.endpoint", "http://${oauthServerIpAddress}:${oauthServerPort}/oauth/check_token")
         return props
     }
