@@ -1,11 +1,8 @@
 ext {
 
-    def resourcesFolder = "/resources/main/"
-    def testResourcesFolder = "/resources/test/"
-
     storeProperties = { buildDir, propertiesName, propertiesFile ->
-        createFolder(buildDir + resourcesFolder)
-        def path = new File(buildDir + resourcesFolder + propertiesName)
+        createFolder(buildDir + resourcesDir)
+        def path = new File(buildDir + resourcesDir + propertiesName)
         propertiesFile.store(path.newWriter(), null)
     }
 
@@ -33,7 +30,7 @@ ext {
     copySharedProperties = { buildDir ->
         copy {
             from("../SharedModule/src/main/resources")
-            into(buildDir + resourcesFolder)
+            into(buildDir + resourcesDir)
         }
     }
 
@@ -41,13 +38,6 @@ ext {
         def dir = new File(path)
         if (!dir.exists()) {
             dir.mkdirs()
-        }
-    }
-
-    copyMainPropertiesToTest = { buildDir ->
-        copy {
-            from(buildDir + resourcesFolder)
-            into(buildDir + testResourcesFolder)
         }
     }
 }

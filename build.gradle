@@ -31,6 +31,7 @@ buildscript {
         srcDir = "src/main/scala"
         testDir = "src/test/scala"
         itestDir = "src/itest/scala"
+        resourcesDir = "/resources/main/"
         jacocoReportPath = "build/jacoco/jacocoTest.exec"
     }
     repositories {
@@ -107,14 +108,32 @@ subprojects {
         testCompile "org.mockito:mockito-all:${mockitoVersion}"
     }
 
-    scalaStyle {
-        configLocation = "scalastyle_config.xml"
-        includeTestSourceDirectory = true
-        source = srcDir
-        testSource = testDir
-        testSource += itestDir
+
+    sourceSets {
+        itest {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            scala.srcDir file(itestDir)
+            resources.srcDir file(resourcesDir)
+        }
     }
 
+    // test
+    task itest(type: Test) {
+        testClassesDir = sourceSets.itest.output.classesDir
+        classpath = sourceSets.itest.runtimeClasspath
+
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
+
+    configurations {
+        itestCompile.extendsFrom testCompile
+        itestRuntime.extendsFrom testRuntime
+    }
+
+    // jacoco
     test {
         jacoco {
             append = true
@@ -133,6 +152,7 @@ subprojects {
         }
     }
 
+    // coveralls
     tasks.coveralls {
         dependsOn "check"
     }
@@ -141,28 +161,12 @@ subprojects {
         jacocoReportPath = jacocoReportPath
     }
 
-    configurations {
-        itestCompile.extendsFrom testCompile
-        itestRuntime.extendsFrom testRuntime
-    }
-
-    sourceSets {
-        itest {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
-            scala.srcDir file(itestDir)
-        }
-        test {
-            resources.srcDir file("src/itest/resources")
-        }
-    }
-
-    task itest(type: Test) {
-        testClassesDir = sourceSets.itest.output.classesDir
-        classpath = sourceSets.itest.runtimeClasspath
-
-        testLogging {
-            events "passed", "skipped", "failed"
-        }
+    // scalastyle
+    scalaStyle {
+        configLocation = "scalastyle_config.xml"
+        includeTestSourceDirectory = true
+        source = srcDir
+        testSource = testDir
+        testSource += itestDir
     }
 }

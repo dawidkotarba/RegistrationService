@@ -1,8 +1,8 @@
 apply plugin: "spring-boot"
 
 jar {
-    baseName = "ProxyModule"
-    version = "0.0.1-SNAPSHOT"
+    baseName = proxyModuleName
+    version = jarVersion
 }
 
 dependencies {
@@ -18,7 +18,6 @@ task createPropertiesFile(dependsOn: processResources) << {
     storeProperties("$buildDir", "application.properties", decorateCommonProperties())
     storeProperties("$buildDir", "modules.properties", createModulesProperties())
     copySharedProperties("$buildDir")
-    copyMainPropertiesToTest("$buildDir")
 }
 
 def decorateCommonProperties() {
