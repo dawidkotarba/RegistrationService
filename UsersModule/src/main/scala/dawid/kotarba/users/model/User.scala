@@ -13,31 +13,14 @@ import dawid.kotarba.shared.model.entities.AbstractEntity
 class User extends AbstractEntity {
 
   @Column(name = "USERNAME", nullable = false, unique = true)
-  private var username: String = null
+  var username: String = null
 
   @Column(name = "PASSWORD", nullable = false)
-  private var password: String = null
+  var password: String = null
 
   @Column(name = "ENABLED", nullable = false)
-  private var enabled: Boolean = false
+  var enabled: Boolean = false
 
   @Column(name = "ROLE", nullable = false)
-  private var role: String = null
-
-  def setUsername(username: String): Unit = this.username = username
-
-  def getUsername(): String = username
-
-  def setPassword(password: String): Unit = this.password = password
-
-  def getPassword(): String = password
-
-  def setEnabled(enabled: Boolean): Unit = this.enabled = enabled
-
-  def getEnabled(): Boolean = enabled
-
-  def setRole(role: String): Unit = this.role = role
-
-  def getRole(): String = role
-
+  var role: String = null
 }

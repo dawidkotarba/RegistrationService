@@ -9,13 +9,13 @@ CREATE SEQUENCE event_seq INCREMENT BY 1;
 -- TABLES
 CREATE TABLE event_types(
   id INT NOT NULL DEFAULT nextval('event_type_seq') PRIMARY KEY,
-  type VARCHAR(100)
+  type VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE events(
   id BIGINT NOT NULL DEFAULT nextval('event_seq') PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
-  event_time  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  event_date DATE DEFAULT CURRENT_DATE,
   event INT NOT NULL,
   description VARCHAR(100),
   FOREIGN KEY (event) REFERENCES event_types(id)
