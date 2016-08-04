@@ -28,8 +28,9 @@ class DefaultEventDao @Inject()(eventRepository: EventRepository,
     val eventType = EventTypeConverter.toEntity(eventDto.eventType)
     val savedEventType = eventTypeRepository.save(eventType)
 
-    val event = EventConverter.toEntity(eventDto, savedEventType)
-    val saved = eventRepository.save(event)
-    saved.getId()
+    savedEventType.getId()
+//    val event = EventConverter.toEntity(eventDto, savedEventType)
+//    val saved = eventRepository.save(event)
+//    saved.getId()
   }
 }

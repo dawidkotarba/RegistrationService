@@ -1,7 +1,7 @@
 package dawid.kotarba.history.converter
 
 import dawid.kotarba.history.dto.EventTypeDto
-import dawid.kotarba.history.model.EventType
+import dawid.kotarba.history.model.entity.EventType
 
 /**
   * Created by Dawid on 02.08.2016.

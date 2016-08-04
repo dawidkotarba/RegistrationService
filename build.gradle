@@ -19,8 +19,12 @@ buildscript {
 
         // utils
         guavaVersion = "19.0"
-        jacksonJsr310Version = "2.8.0"
         swaggerVersion = "2.5.0"
+
+        // jackson
+        jacksonJsr310Version = "2.7.5"
+        jacksonScalaVersion = "2.7.5"
+        jacksonDatabindVersion = "2.7.5"
 
         // reports
         jacocoVersion = "0.7.6.201602180812"
@@ -101,7 +105,11 @@ subprojects {
 
         // utils
         compile "com.google.guava:guava:${guavaVersion}"
+
+        // jackson
         compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonJsr310Version}"
+        compile "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
+        compile "com.fasterxml.jackson.module:jackson-module-scala_2.11:${jacksonScalaVersion}"
 
         // test
         testCompile "org.springframework.boot:spring-boot-starter-test"

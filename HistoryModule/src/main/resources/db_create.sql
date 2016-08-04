@@ -15,7 +15,7 @@ CREATE TABLE event_types(
 CREATE TABLE events(
   id BIGINT NOT NULL DEFAULT nextval('event_seq') PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
-  event_date DATE DEFAULT CURRENT_DATE,
+  event_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   event INT NOT NULL,
   description VARCHAR(100),
   FOREIGN KEY (event) REFERENCES event_types(id)

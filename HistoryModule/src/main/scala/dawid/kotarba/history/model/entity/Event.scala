@@ -1,4 +1,4 @@
-package dawid.kotarba.history.model
+package dawid.kotarba.history.model.entity
 
 import java.util.Date
 import javax.persistence._
@@ -17,7 +17,7 @@ class Event extends AbstractEntity {
   @Column(name = "USERNAME", nullable = false, unique = true)
   var username: String = null
 
-  @Column(name = "EVENT_DATE", nullable = false)
+  @Column(name = "EVENT_DATE", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
   var eventDate: Date = null
 
   @OneToOne(cascade = Array(CascadeType.ALL))
