@@ -2,7 +2,6 @@ package dawid.kotarba.history.model.entity
 
 import javax.persistence._
 
-import dawid.kotarba.history.model.enums.EventTypeEnum.EventTypeEnum
 import dawid.kotarba.shared.model.entities.AbstractEntity
 
 /**
@@ -15,5 +14,5 @@ import dawid.kotarba.shared.model.entities.AbstractEntity
 class EventType extends AbstractEntity {
 
   @Column(name = "TYPE", nullable = false, unique = true)
-  var eventType: EventTypeEnum = null
+  var eventType: String = null
 }

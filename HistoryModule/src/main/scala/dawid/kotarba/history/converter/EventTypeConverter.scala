@@ -1,6 +1,5 @@
 package dawid.kotarba.history.converter
 
-import dawid.kotarba.history.dto.EventTypeDto
 import dawid.kotarba.history.model.entity.EventType
 
 /**
@@ -8,11 +7,9 @@ import dawid.kotarba.history.model.entity.EventType
   */
 object EventTypeConverter {
 
-  def toDto(eventType: EventType): EventTypeDto = EventTypeDto(eventType.eventType)
-
-  def toEntity(eventTypeDto: EventTypeDto): EventType = {
+  def toEntity(eventType: String): EventType = {
     val event = new EventType
-    event.eventType = eventTypeDto.eventType
+    event.eventType = eventType
     event
   }
 }

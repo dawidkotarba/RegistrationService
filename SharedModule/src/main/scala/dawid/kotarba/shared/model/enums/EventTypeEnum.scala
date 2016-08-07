@@ -1,4 +1,4 @@
-package dawid.kotarba.history.model.enums
+package dawid.kotarba.shared.model.enums
 
 /**
   * Created by Dawid on 04.08.2016.

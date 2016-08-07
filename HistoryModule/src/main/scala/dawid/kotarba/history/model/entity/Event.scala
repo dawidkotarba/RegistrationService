@@ -1,6 +1,6 @@
 package dawid.kotarba.history.model.entity
 
-import java.util.Date
+import java.time.LocalDateTime
 import javax.persistence._
 
 import dawid.kotarba.shared.model.entities.AbstractEntity
@@ -18,7 +18,7 @@ class Event extends AbstractEntity {
   var username: String = null
 
   @Column(name = "EVENT_DATE", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-  var eventDate: Date = null
+  var eventDate: LocalDateTime = null
 
   @OneToOne(cascade = Array(CascadeType.ALL))
   @JoinColumn(name = "EVENT")
