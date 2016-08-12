@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository
   */
 trait EventTypeRepository extends JpaRepository[EventType, java.lang.Long] {
 
-  @Cacheable(cacheNames = Array("eventTypeCache"))
+//  @Cacheable(cacheNames = Array("eventTypeCache")) //testing purpose, cannot cache that
   def findByEventType(eventType: String): java.util.List[EventType]
 }
