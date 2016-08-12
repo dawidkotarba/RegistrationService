@@ -7,6 +7,7 @@ buildscript {
 
         // Spring
         springBootVersion = "1.3.5.RELEASE"
+        springVersion = "4.3.2.RELEASE"
         activeMqVersion = "1.4.0.BUILD-SNAPSHOT"
 
         // testing
@@ -86,6 +87,7 @@ subprojects {
         compile "org.springframework.boot:spring-boot-starter-web"
         compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.springframework.boot:spring-boot-starter-security"
+        compile "org.springframework:spring-context-support:${springVersion}"
         compile "org.springframework.boot:spring-boot-starter-activemq:${activeMqVersion}"
 
         // Spring
