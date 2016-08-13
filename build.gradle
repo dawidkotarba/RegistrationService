@@ -26,6 +26,9 @@ buildscript {
         coverallsVersion = "2.4.0"
         scalastyleVersion = "0.8.2"
 
+        // jackson
+        jacksonVersion = "2.6.6"
+
         // folders
         srcDir = "src/main/scala"
         testDir = "src/test/scala"
@@ -95,6 +98,8 @@ subprojects {
         compile "com.mysema.querydsl:querydsl-jpa:${queryDslVersion}"
         compile "com.mysema.querydsl:querydsl-apt:${queryDslVersion}:jpa"
 
+        // jackson
+        compile "com.fasterxml.jackson.module:jackson-module-scala_2.11:${jacksonVersion}"
         // Swagger
         compile "io.springfox:springfox-swagger2:${swaggerVersion}"
         compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"

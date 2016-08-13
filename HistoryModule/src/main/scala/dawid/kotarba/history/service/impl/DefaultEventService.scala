@@ -9,6 +9,7 @@ import dawid.kotarba.history.dto.EventDto
 import dawid.kotarba.history.model.entity.EventType
 import dawid.kotarba.history.repository.{EventRepository, EventTypeRepository}
 import dawid.kotarba.history.service.EventService
+import dawid.kotarba.shared.model.enums.EventTypeEnum.EventTypeEnum
 import dawid.kotarba.shared.utils.PreconditionsUtils
 
 import scala.collection.JavaConverters._
@@ -26,11 +27,11 @@ class DefaultEventService @Inject()(eventRepository: EventRepository,
     eventRepository.save(EventConverter.toEntity(eventDto, getEventType(eventDto.eventType))).getId()
   }
 
-  private def getEventType(eventType: String): EventType = {
-    PreconditionsUtils.checkNotNull(eventType, "eventType")
-    val eventTypes = eventTypeRepository.findByEventType(eventType)
+  private def getEventType(eventTypeEnum: EventTypeEnum): EventType = {
+    PreconditionsUtils.checkNotNull(eventTypeEnum, "eventTypeEnum")
+    val eventTypes = eventTypeRepository.findByEventType(eventTypeEnum.toString)
     if (eventTypes.isEmpty) {
-      val eventTypeEntity = EventTypeConverter.toEntity(eventType)
+      val eventTypeEntity = EventTypeConverter.toEntity(eventTypeEnum.toString)
       eventTypeRepository.save(eventTypeEntity)
     } else {
       eventTypes.get(0)
