@@ -3,7 +3,7 @@ package dawid.kotarba.history.converter
 import java.time.LocalDateTime
 
 import dawid.kotarba.history.dto.EventDto
-import dawid.kotarba.history.model.entity.{Event, EventType}
+import dawid.kotarba.history.model.{Event, EventType}
 import dawid.kotarba.shared.model.enums.EventTypeEnum
 
 /**

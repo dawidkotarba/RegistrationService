@@ -1,7 +1,6 @@
 package dawid.kotarba.history.repository
 
-
-import dawid.kotarba.history.model.entity.EventType
+import dawid.kotarba.history.model.EventType
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.jpa.repository.JpaRepository
 

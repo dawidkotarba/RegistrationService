@@ -1,4 +1,4 @@
-package dawid.kotarba.history.model.entity
+package dawid.kotarba.history.model
 
 import javax.persistence._
 

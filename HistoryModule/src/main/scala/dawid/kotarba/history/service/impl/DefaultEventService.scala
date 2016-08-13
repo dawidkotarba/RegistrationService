@@ -6,7 +6,7 @@ import javax.validation.Valid
 
 import dawid.kotarba.history.converter.{EventConverter, EventTypeConverter}
 import dawid.kotarba.history.dto.EventDto
-import dawid.kotarba.history.model.entity.EventType
+import dawid.kotarba.history.model.EventType
 import dawid.kotarba.history.repository.{EventRepository, EventTypeRepository}
 import dawid.kotarba.history.service.EventService
 import dawid.kotarba.shared.model.enums.EventTypeEnum.EventTypeEnum

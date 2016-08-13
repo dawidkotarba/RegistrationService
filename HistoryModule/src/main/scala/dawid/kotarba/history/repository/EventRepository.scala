@@ -1,6 +1,6 @@
 package dawid.kotarba.history.repository
 
-import dawid.kotarba.history.model.entity.Event
+import dawid.kotarba.history.model.Event
 import org.springframework.data.jpa.repository.JpaRepository
 
 /**
