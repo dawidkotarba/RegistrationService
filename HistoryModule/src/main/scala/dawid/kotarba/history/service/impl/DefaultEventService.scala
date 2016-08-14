@@ -27,7 +27,7 @@ class DefaultEventService @Inject()(eventRepository: EventRepository,
     eventRepository.save(EventConverter.toEntity(eventDto, getEventType(eventDto.eventType))).getId()
   }
 
-  private def getEventType(eventTypeEnum: EventTypeEnum): EventType = {
+  override def getEventType(eventTypeEnum: EventTypeEnum): EventType = {
     PreconditionsUtils.checkNotNull(eventTypeEnum, "eventTypeEnum")
     val eventTypes = eventTypeRepository.findByEventType(eventTypeEnum.toString)
     if (eventTypes.isEmpty) {

@@ -17,7 +17,7 @@ buildscript {
         h2DbVersion = "1.4.192"
         ehCacheVersion = "2.6.11"
 
-        // Jackson
+        // Jackson (has to match spring boot"s jackson version)
         jacksonVersion = "2.6.6"
 
         // utils
@@ -28,6 +28,9 @@ buildscript {
         jacocoVersion = "0.7.6.201602180812"
         coverallsVersion = "2.4.0"
         scalastyleVersion = "0.8.2"
+
+        // test
+        scalaTestVersion = "3.0.0"
 
         // folders
         srcDir = "src/main/scala"
@@ -82,7 +85,7 @@ subprojects {
 
         // Spring boot
         compile "org.springframework.boot:spring-boot-starter-web"
-        compile 'org.springframework.boot:spring-boot-starter-cache'
+        compile "org.springframework.boot:spring-boot-starter-cache"
         compile "org.springframework.boot:spring-boot-starter-security"
         compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.springframework.boot:spring-boot-starter-activemq:${activeMqVersion}"
@@ -109,6 +112,7 @@ subprojects {
         compile "com.google.guava:guava:${guavaVersion}"
 
         // test
+        testCompile "org.scalatest:scalatest_2.11:${scalaTestVersion}"
         testCompile "org.springframework.boot:spring-boot-starter-test"
         testCompile "org.mockito:mockito-all:${mockitoVersion}"
     }
