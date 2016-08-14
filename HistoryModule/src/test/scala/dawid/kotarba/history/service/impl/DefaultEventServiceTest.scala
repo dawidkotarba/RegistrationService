@@ -36,10 +36,10 @@ class DefaultEventServiceTest {
   @Captor
   private val stringCaptor: ArgumentCaptor[String] = null
 
-  private val TEST_USERNAME = "username"
-  private val TEST_DESCRIPTION = "desc"
   private val TEST_ID = 1L
+  private val TEST_USERNAME = "username"
   private val TEST_EVENT_TYPE_ENUM = EventTypeEnum.LOG_IN
+  private val TEST_DESCRIPTION = "desc"
 
   @Before
   def setUp(): Unit = {
