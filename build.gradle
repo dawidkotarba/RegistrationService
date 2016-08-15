@@ -1,6 +1,7 @@
-apply from: "modules_config.gradle"
+apply from: "config/modules_config.gradle"
 
 buildscript {
+
     ext {
         // Scala
         scalaVeresion = "2.11.8"
@@ -39,6 +40,7 @@ buildscript {
         resourcesDir = "/resources/main/"
         jacocoReportPath = "build/jacoco/jacocoTest.exec"
     }
+
     repositories {
         mavenCentral()
         jcenter()
@@ -47,6 +49,7 @@ buildscript {
         maven { url "http://repo.spring.io/libs-milestone-local" }
         maven { url "http://repo.spring.io/libs-release-local" }
     }
+
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:${coverallsVersion}"
@@ -62,7 +65,9 @@ subprojects {
     apply plugin: "com.github.kt3k.coveralls"
     apply plugin: "jacoco"
     apply plugin: "io.spring.dependency-management"
-    apply from: "../commons.gradle"
+    apply from: "../config/commons.gradle"
+    apply from: "../config/test_config.gradle"
+    apply from: "../config/utils_config.gradle"
 
     dependencyManagement {
         imports {
@@ -115,67 +120,5 @@ subprojects {
         testCompile "org.scalatest:scalatest_2.11:${scalaTestVersion}"
         testCompile "org.springframework.boot:spring-boot-starter-test"
         testCompile "org.mockito:mockito-all:${mockitoVersion}"
-    }
-
-
-    sourceSets {
-        itest {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
-            scala.srcDir file(itestDir)
-            resources.srcDir file(resourcesDir)
-        }
-    }
-
-    // test
-    task itest(type: Test) {
-        testClassesDir = sourceSets.itest.output.classesDir
-        classpath = sourceSets.itest.runtimeClasspath
-
-        testLogging {
-            events "passed", "skipped", "failed"
-        }
-    }
-
-    configurations {
-        itestCompile.extendsFrom testCompile
-        itestRuntime.extendsFrom testRuntime
-    }
-
-    // jacoco
-    test {
-        jacoco {
-            append = true
-            destinationFile = file("../${jacocoReportPath}")
-        }
-    }
-
-    jacoco {
-        toolVersion = "${jacocoVersion}"
-    }
-
-    jacocoTestReport {
-        reports {
-            xml.enabled = true
-            html.enabled = true
-        }
-    }
-
-    // coveralls
-    tasks.coveralls {
-        dependsOn "check"
-    }
-
-    coveralls {
-        jacocoReportPath = jacocoReportPath
-    }
-
-    // scalastyle
-    scalaStyle {
-        configLocation = "scalastyle_config.xml"
-        includeTestSourceDirectory = true
-        source = srcDir
-        testSource = testDir
-        testSource += itestDir
     }
 }
