@@ -1,0 +1,36 @@
+// jacoco
+test {
+    jacoco {
+        append = true
+        destinationFile = file("../${jacocoReportPath}")
+    }
+}
+
+jacoco {
+    toolVersion = "${jacocoVersion}"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+// coveralls
+tasks.coveralls {
+    dependsOn "check"
+}
+
+coveralls {
+    jacocoReportPath = jacocoReportPath
+}
+
+// scalastyle
+scalaStyle {
+    configLocation = "scalastyle_config.xml"
+    includeTestSourceDirectory = true
+    source = srcDir
+    testSource = testDir
+    testSource += itestDir
+}

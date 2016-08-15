@@ -2,7 +2,7 @@ package dawid.kotarba.shared.service.impl
 
 import javax.inject.{Inject, Named}
 
-import dawid.kotarba.shared.config.contextLoaded.LocalizationConfig
+import dawid.kotarba.shared.config.obligatory.LocalizationConfig
 import dawid.kotarba.shared.service.LocalizationService
 import org.springframework.context.MessageSource
 

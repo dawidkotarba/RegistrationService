@@ -9,7 +9,5 @@ import dawid.kotarba.users.model.User
 object UserConverter {
 
   def toDto(user: User): UserDto =
-    UserDto(user.getUsername(), user.getPassword(), user.getEnabled(), user.getRole())
-
-
+    UserDto(user.username, user.password, user.enabled, user.role)
 }

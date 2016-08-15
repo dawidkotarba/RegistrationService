@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.extendable
+package dawid.kotarba.shared.config.optional
 
 import java.util.Properties
 import javax.inject.Inject
@@ -22,7 +22,7 @@ import org.springframework.transaction.PlatformTransactionManager
   * Created by Dawid on 03.07.2016.
   */
 // children to be annotated by @DatabaseConfiguration
-trait CommonMockDbConfig {
+class CommonMockDbConfig {
 
   @Value("classpath:db_create.sql")
   private val h2DbCreateScript: Resource = null

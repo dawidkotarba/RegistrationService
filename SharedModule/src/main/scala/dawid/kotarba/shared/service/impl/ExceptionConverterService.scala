@@ -6,6 +6,7 @@ import java.util.function.Consumer
 import javax.inject.{Inject, Named}
 
 import dawid.kotarba.shared.dto.{ExceptionResponseDto, ValidationError}
+import dawid.kotarba.shared.exceptions.ExceptionType.ExceptionType
 import dawid.kotarba.shared.exceptions.{AbstractApplicationRuntimeException, ExceptionType}
 import dawid.kotarba.shared.service.LocalizationService
 import dawid.kotarba.shared.utils.DateTimeUtils
@@ -27,13 +28,13 @@ class ExceptionConverterService @Inject()(localizationService: LocalizationServi
 
   def convert(e: Exception, bindingResult: BindingResult): ExceptionResponseDto = {
     val exceptionResponse = convert(e)
-    exceptionResponse.validationErrors.::(parseBindingResult(bindingResult))
+    exceptionResponse.validationErrors :: parseBindingResult(bindingResult)
     exceptionResponse
   }
 
-  def getLocalizedUserMessage(exceptionType: ExceptionType.Value): String = getLocalizedUserMessage(exceptionType, null)
+  def getLocalizedUserMessage(exceptionType: ExceptionType): String = getLocalizedUserMessage(exceptionType, null)
 
-  def getLocalizedUserMessage(exceptionType: ExceptionType.Value, params: Array[Object]): String = if (params != null)
+  def getLocalizedUserMessage(exceptionType: ExceptionType, params: Array[Object]): String = if (params != null)
     localizationService.getMessage(exceptionType.toString, params)
   else
     localizationService.getMessage(exceptionType.toString)

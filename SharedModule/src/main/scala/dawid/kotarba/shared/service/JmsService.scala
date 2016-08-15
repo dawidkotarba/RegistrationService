@@ -2,7 +2,7 @@ package dawid.kotarba.shared.service
 
 import javax.jms._
 
-import dawid.kotarba.shared.model.JmsDestinationType
+import dawid.kotarba.shared.model.JmsDestinationType.JmsDestinationType
 
 /**
   * Created by Dawid on 26.07.2016.
@@ -12,11 +12,11 @@ trait JmsService {
 
   def createSession(connection: Connection): Session
 
-  def createDestination(session: Session, destinationType: JmsDestinationType.Value, endpointName: String): Destination
+  def createDestination(session: Session, destinationType: JmsDestinationType, endpointName: String): Destination
 
-  def createConsumer(session: Session, destinationType: JmsDestinationType.Value, endpointName: String): MessageConsumer
+  def createConsumer(session: Session, destinationType: JmsDestinationType, endpointName: String): MessageConsumer
 
-  def createProducer(session: Session, destinationType: JmsDestinationType.Value, endpointName: String): MessageProducer
+  def createProducer(session: Session, destinationType: JmsDestinationType, endpointName: String): MessageProducer
 
   def close(session: Session, connection: Connection): Unit = {
     if (session != null) {

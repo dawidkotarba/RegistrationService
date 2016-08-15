@@ -7,7 +7,7 @@ CREATE SEQUENCE users_seq INCREMENT BY 1;
 
 -- TABLES
 CREATE TABLE users (
-  id INT NOT NULL DEFAULT nextval('users_seq') PRIMARY KEY,
+  id BIGINT NOT NULL DEFAULT nextval('users_seq') PRIMARY KEY,
   version INT NOT NULL DEFAULT 0,
   username VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(50) NOT NULL,

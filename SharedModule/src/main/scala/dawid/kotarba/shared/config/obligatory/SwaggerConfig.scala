@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.contextLoaded
+package dawid.kotarba.shared.config.obligatory
 
 import java.util
 

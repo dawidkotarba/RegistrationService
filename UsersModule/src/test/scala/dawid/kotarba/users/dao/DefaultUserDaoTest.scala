@@ -50,7 +50,7 @@ class DefaultUserDaoTest {
     // given:
     val testUserName = "testUser"
     val user = new User
-    user.setUsername(testUserName)
+    user.username = testUserName
 
     val users = new java.util.ArrayList[User]
     users.add(user)

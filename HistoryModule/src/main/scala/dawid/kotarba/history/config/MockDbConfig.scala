@@ -1,4 +1,4 @@
-package dawid.kotarba.users.config
+package dawid.kotarba.history.config
 
 import dawid.kotarba.shared.annotation.DatabaseConfiguration
 import dawid.kotarba.shared.config.optional.CommonMockDbConfig
