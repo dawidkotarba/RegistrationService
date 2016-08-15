@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.contextLoaded
+package dawid.kotarba.shared.config.obligatory
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule

@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.contextLoaded
+package dawid.kotarba.shared.config.obligatory
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.{Bean, Configuration, DependsOn, EnableMBeanExport}

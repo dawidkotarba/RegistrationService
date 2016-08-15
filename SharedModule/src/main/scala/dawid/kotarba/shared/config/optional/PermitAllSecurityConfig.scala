@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.extendable
+package dawid.kotarba.shared.config.optional
 
 import dawid.kotarba.shared.utils.SecurityUtils
 import org.springframework.security.config.annotation.web.builders.{HttpSecurity, WebSecurity}

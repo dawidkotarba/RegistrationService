@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.extendable
+package dawid.kotarba.shared.config.optional
 
 import java.util.Properties
 import javax.inject.Inject

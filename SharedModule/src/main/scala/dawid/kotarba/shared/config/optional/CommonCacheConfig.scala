@@ -1,4 +1,4 @@
-package dawid.kotarba.shared.config.extendable
+package dawid.kotarba.shared.config.optional
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.cache.CacheManager

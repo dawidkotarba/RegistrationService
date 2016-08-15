@@ -1,6 +1,6 @@
 package dawid.kotarba.history.config
 
-import dawid.kotarba.shared.config.extendable.PermitAllSecurityConfig
+import dawid.kotarba.shared.config.optional.PermitAllSecurityConfig
 import org.springframework.context.annotation.Configuration
 
 
