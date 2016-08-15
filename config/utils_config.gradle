@@ -23,7 +23,7 @@ tasks.coveralls {
 }
 
 coveralls {
-    jacocoReportPath = jacocoReportPath
+    jacocoReportPath = "${jacocoReportPath}"
 }
 
 // scalastyle
