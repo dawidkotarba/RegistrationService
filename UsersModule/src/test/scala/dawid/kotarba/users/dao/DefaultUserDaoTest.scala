@@ -1,6 +1,6 @@
 package dawid.kotarba.users.dao
 
-import dawid.kotarba.shared.annotation.UnitTest
+import dawid.kotarba.common.annotation.UnitTest
 import dawid.kotarba.users.dao.impl.DefaultUserDao
 import dawid.kotarba.users.model.User
 import dawid.kotarba.users.repository.UserRepository

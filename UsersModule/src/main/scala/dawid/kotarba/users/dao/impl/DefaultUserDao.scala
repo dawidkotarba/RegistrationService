@@ -2,7 +2,7 @@ package dawid.kotarba.users.dao.impl
 
 import javax.inject.{Inject, Named}
 
-import dawid.kotarba.shared.utils.PreconditionsUtils
+import dawid.kotarba.common.utils.PreconditionsUtils
 import dawid.kotarba.users.converter.UserConverter
 import dawid.kotarba.users.dao.UserDao
 import dawid.kotarba.users.dto.UserDto

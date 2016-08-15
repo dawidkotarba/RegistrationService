@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 
 import dawid.kotarba.history.dto.EventDto
 import dawid.kotarba.history.model.{Event, EventType}
-import dawid.kotarba.shared.model.enums.EventTypeEnum
+import dawid.kotarba.common.model.enums.EventTypeEnum
 
 /**
   * Created by Dawid on 02.08.2016.

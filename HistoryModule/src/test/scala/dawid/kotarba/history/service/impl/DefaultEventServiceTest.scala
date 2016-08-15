@@ -5,8 +5,8 @@ import java.util.Collections
 import dawid.kotarba.history.dto.EventDto
 import dawid.kotarba.history.model.{Event, EventType}
 import dawid.kotarba.history.repository.{EventRepository, EventTypeRepository}
-import dawid.kotarba.shared.annotation.UnitTest
-import dawid.kotarba.shared.model.enums.EventTypeEnum
+import dawid.kotarba.common.annotation.UnitTest
+import dawid.kotarba.common.model.enums.EventTypeEnum
 import org.junit.Assert._
 import org.junit.{Before, Test}
 import org.mockito.Mockito._

@@ -3,8 +3,8 @@ package dawid.kotarba.history.dto
 import javax.validation.constraints.NotNull
 
 import com.fasterxml.jackson.module.scala.JsonScalaEnumeration
-import dawid.kotarba.shared.model.enums.EventTypeEnum.EventTypeEnum
-import dawid.kotarba.shared.model.enums.EventTypeEnumType
+import dawid.kotarba.common.model.enums.EventTypeEnum.EventTypeEnum
+import dawid.kotarba.common.model.enums.EventTypeEnumType
 
 import scala.beans.BeanProperty
 

@@ -1,6 +1,6 @@
 package dawid.kotarba.template
 
-import dawid.kotarba.shared.annotation.UnitTest
+import dawid.kotarba.common.annotation.UnitTest
 import org.junit.Test
 
 /**

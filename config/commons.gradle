@@ -27,9 +27,9 @@ ext {
         return props
     }
 
-    copySharedProperties = { buildDir ->
+    copyCommonProperties = { buildDir ->
         copy {
-            from("../SharedModule/src/main/resources")
+            from("../CommonModule/src/main/resources")
             into(buildDir + resourcesDir)
         }
     }

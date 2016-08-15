@@ -2,7 +2,7 @@ package dawid.kotarba.history.model
 
 import javax.persistence._
 
-import dawid.kotarba.shared.model.entities.AbstractEntity
+import dawid.kotarba.common.model.entities.AbstractEntity
 
 /**
   * Created by Dawid on 02.08.2016.

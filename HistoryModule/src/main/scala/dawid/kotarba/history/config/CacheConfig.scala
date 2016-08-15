@@ -1,6 +1,6 @@
 package dawid.kotarba.history.config
 
-import dawid.kotarba.shared.config.optional.CommonCacheConfig
+import dawid.kotarba.common.config.optional.CommonCacheConfig
 import org.springframework.context.annotation.Configuration
 
 /**

@@ -2,7 +2,7 @@ package dawid.kotarba.history.service
 
 import dawid.kotarba.history.dto.EventDto
 import dawid.kotarba.history.model.EventType
-import dawid.kotarba.shared.model.enums.EventTypeEnum._
+import dawid.kotarba.common.model.enums.EventTypeEnum._
 
 /**
   * Created by Dawid on 02.08.2016.

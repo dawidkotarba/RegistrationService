@@ -8,7 +8,7 @@ import dawid.kotarba.history.config.MainConfig
 import dawid.kotarba.history.dto.EventDto
 import dawid.kotarba.history.model.Event
 import dawid.kotarba.history.repository.{EventRepository, EventTypeRepository}
-import dawid.kotarba.shared.model.enums.EventTypeEnum
+import dawid.kotarba.common.model.enums.EventTypeEnum
 import org.junit.Assert._
 import org.junit.Test
 import org.junit.runner.RunWith

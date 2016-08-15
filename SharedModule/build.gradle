@@ -1,4 +1,0 @@
-jar {
-    baseName = "SharedModule"
-    version = "0.0.1-SNAPSHOT"
-}

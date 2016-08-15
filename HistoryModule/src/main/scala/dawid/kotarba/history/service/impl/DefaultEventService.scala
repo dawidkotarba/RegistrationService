@@ -9,8 +9,8 @@ import dawid.kotarba.history.dto.EventDto
 import dawid.kotarba.history.model.EventType
 import dawid.kotarba.history.repository.{EventRepository, EventTypeRepository}
 import dawid.kotarba.history.service.EventService
-import dawid.kotarba.shared.model.enums.EventTypeEnum.EventTypeEnum
-import dawid.kotarba.shared.utils.PreconditionsUtils
+import dawid.kotarba.common.model.enums.EventTypeEnum.EventTypeEnum
+import dawid.kotarba.common.utils.PreconditionsUtils
 
 import scala.collection.JavaConverters._
 

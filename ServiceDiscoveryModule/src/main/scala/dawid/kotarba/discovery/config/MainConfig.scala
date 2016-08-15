@@ -1,6 +1,6 @@
 package dawid.kotarba.discovery.config
 
-import dawid.kotarba.shared.annotation.SpringBootConfiguration
+import dawid.kotarba.common.annotation.SpringBootConfiguration
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer
 
 /**

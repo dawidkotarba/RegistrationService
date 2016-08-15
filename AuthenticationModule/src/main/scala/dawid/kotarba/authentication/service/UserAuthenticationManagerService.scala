@@ -3,10 +3,10 @@ package dawid.kotarba.authentication.service
 import javax.inject.{Inject, Named}
 
 import dawid.kotarba.authentication.dto.UserDto
-import dawid.kotarba.shared.exceptions.impl.BadCredentialsException
-import dawid.kotarba.shared.service.RestTemplateService
-import dawid.kotarba.shared.service.impl.ModulesPropertiesService
-import dawid.kotarba.shared.utils.PreconditionsUtils
+import dawid.kotarba.common.exceptions.impl.BadCredentialsException
+import dawid.kotarba.common.service.RestTemplateService
+import dawid.kotarba.common.service.impl.ModulesPropertiesService
+import dawid.kotarba.common.utils.PreconditionsUtils
 import org.springframework.http.{HttpMethod, ResponseEntity}
 import org.springframework.security.authentication.{AuthenticationManager, UsernamePasswordAuthenticationToken}
 import org.springframework.security.core.Authentication

@@ -2,8 +2,8 @@ package dawid.kotarba.users.service.impl
 
 import javax.inject.{Inject, Named}
 
-import dawid.kotarba.shared.exceptions.impl.NotFoundException
-import dawid.kotarba.shared.utils.PreconditionsUtils
+import dawid.kotarba.common.exceptions.impl.NotFoundException
+import dawid.kotarba.common.utils.PreconditionsUtils
 import dawid.kotarba.users.dao.UserDao
 import dawid.kotarba.users.dto.UserDto
 import dawid.kotarba.users.service.UserService

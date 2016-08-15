@@ -2,7 +2,7 @@ package dawid.kotarba.users.model
 
 import javax.persistence._
 
-import dawid.kotarba.shared.model.entities.AbstractEntity
+import dawid.kotarba.common.model.entities.AbstractEntity
 
 /**
   * Created by Dawid on 08.07.2016.
