@@ -11,7 +11,7 @@ dependencies {
 }
 
 springBoot {
-    mainClass = "dawid.kotarba.template.ProxyModule"
+    mainClass = "dawid.kotarba.proxy.ProxyModule"
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
