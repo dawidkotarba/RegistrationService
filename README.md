@@ -13,8 +13,10 @@
 - http://localhost:xxxx/swagger-ui.html (for modules with swagger [currently buggy])
 
 #### Getting OAuth2 token:
-- URL: http://localhost:8082/oauth/token
-- method: POST
-- Content-Type: application/x-www-form-urlencoded
-- Authorization: Basic bW9kdWxlOnJlZ2lzdHJhdGlvblN2
-- Raw payload: username=XXXX&password=XXXX&grant_type=password, where XXXX are username/pwd params
+```
+URL: http://localhost:8082/oauth/token
+Method: POST
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic bW9kdWxlOnJlZ2lzdHJhdGlvblN2
+Raw payload: username=XXXX&password=XXXX&grant_type=password, where XXXX are username/pwd params
+```
