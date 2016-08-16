@@ -14,22 +14,11 @@ springBoot {
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
-    storeProperties("$buildDir", "application.properties", decorateCommonProperties())
+    storeProperties("$buildDir", "application.properties", createCommonProperties())
     storeProperties("$buildDir", "modules.properties", createModulesProperties())
     copyCommonProperties("$buildDir")
 }
 
 classes {
     dependsOn createPropertiesFile
-}
-
-def decorateCommonProperties() {
-    def props = createCommonProperties()
-
-    // auth properties
-    // module:registrationSv => bW9kdWxlOnJlZ2lzdHJhdGlvblN2 (Base64)
-    props.setProperty("auth.username", "module")
-    props.setProperty("auth.secret", "registrationSv")
-
-    return props
 }

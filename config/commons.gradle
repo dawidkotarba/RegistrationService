@@ -6,6 +6,14 @@ ext {
         propertiesFile.store(path.newWriter(), null)
     }
 
+    addAuthenticationProperties = { props ->
+        // module:registrationSv => bW9kdWxlOnJlZ2lzdHJhdGlvblN2 (Base64)
+        props.setProperty("auth.username", "module")
+        props.setProperty("auth.secret", "registrationSv")
+        props.setProperty("oauth.token.endpoint", "http://${oauthHost}:${oauthPort}/oauth/check_token")
+        return props
+    }
+
     createCommonProperties = { ->
         Properties props = new Properties()
         props.setProperty("spring.application.name", applicationName)
@@ -15,7 +23,7 @@ ext {
         props.setProperty("jmx.rmi.port", jmxPort)
         props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaHost}:${eurekaPort}/eureka/")
         props.setProperty("proxy.url", "http://${proxyHost}:${proxyPort}")
-        props.setProperty("oauth.token.endpoint", "http://${oauthHost}:${oauthPort}/oauth/check_token")
+        addAuthenticationProperties(props)
         return props
     }
 

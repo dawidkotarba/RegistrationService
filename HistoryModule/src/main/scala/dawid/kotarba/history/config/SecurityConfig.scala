@@ -1,8 +1,11 @@
 package dawid.kotarba.history.config
 
-import dawid.kotarba.common.config.optional.PermitAllSecurityConfig
+import dawid.kotarba.common.config.optional.{OAuthResourceServerConfig, OAuthSecurityConfig}
 import org.springframework.context.annotation.Configuration
 
 
 @Configuration
-class SecurityConfig extends PermitAllSecurityConfig
+class SecurityConfig extends OAuthSecurityConfig
+
+@Configuration
+class ResourceServerConfig extends OAuthResourceServerConfig

@@ -20,3 +20,8 @@ Content-Type: application/x-www-form-urlencoded
 Authorization: Basic bW9kdWxlOnJlZ2lzdHJhdGlvblN2
 Raw payload: username=XXXX&password=XXXX&grant_type=password, where XXXX are username/pwd params
 ```
+
+In new request use generated token:
+```
+Authorization: Bearer generated_token
+```
