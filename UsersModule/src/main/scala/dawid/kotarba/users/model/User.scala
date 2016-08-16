@@ -15,7 +15,7 @@ class User extends AbstractEntity {
   @Column(name = "USERNAME", nullable = false, unique = true)
   var username: String = null
 
-  @Column(name = "PASSWORD", nullable = false)
+  @Column(name = "PASSWORD", nullable = false) //FIXME: use some way of encryption
   var password: String = null
 
   @Column(name = "ENABLED", nullable = false)

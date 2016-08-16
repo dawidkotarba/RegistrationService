@@ -1,9 +1,10 @@
-package dawid.kotarba.users.dao
+package dawid.kotarba.users.service
 
 import dawid.kotarba.common.annotation.UnitTest
-import dawid.kotarba.users.dao.impl.DefaultUserDao
+import dawid.kotarba.common.exceptions.impl.NotFoundException
 import dawid.kotarba.users.model.User
 import dawid.kotarba.users.repository.UserRepository
+import dawid.kotarba.users.service.impl.DefaultUserService
 import org.junit.Assert._
 import org.junit.{Before, Test}
 import org.mockito.Mockito._
@@ -14,9 +15,9 @@ import org.mockito.{ArgumentCaptor, Captor, Mock, MockitoAnnotations}
   */
 
 @UnitTest
-class DefaultUserDaoTest {
+class DefaultUserServiceTest {
 
-  var underTest: DefaultUserDao = null
+  var underTest: DefaultUserService = null
 
   @Mock
   val userRepository: UserRepository = null
@@ -27,10 +28,10 @@ class DefaultUserDaoTest {
   @Before
   def setUp(): Unit = {
     MockitoAnnotations.initMocks(this)
-    underTest = new DefaultUserDao(userRepository)
+    underTest = new DefaultUserService(userRepository)
   }
 
-  @Test
+  @Test(expected = classOf[NotFoundException])
   def findByUsernameForNoUsers(): Unit = {
     // given:
     val testUserName = "testUser"
@@ -39,10 +40,6 @@ class DefaultUserDaoTest {
 
     // when:
     val result = underTest.findByUsername(testUserName)
-
-    // then:
-    assertTrue(result.isEmpty)
-    assertEquals(testUserName, usernameCaptor.getValue)
   }
 
   @Test
@@ -60,9 +57,8 @@ class DefaultUserDaoTest {
     val result = underTest.findByUsername(testUserName)
 
     // then:
-    assertTrue(result.isDefined)
     assertEquals(testUserName, usernameCaptor.getValue)
-    assertEquals(testUserName, result.get.username)
+    assertEquals(testUserName, result.username)
   }
 
   @Test(expected = classOf[NullPointerException])
