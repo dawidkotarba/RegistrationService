@@ -51,19 +51,18 @@ class CommonMockDbConfig {
   @Bean
   @Inject
   def dataSourceInitializer(dataSource: DataSource): DataSourceInitializer = {
+    def databasePopulator(): DatabasePopulator = {
+      val populator = new ResourceDatabasePopulator
+      populator.addScript(h2DbCreateScript)
+      populator.addScript(h2DbDataInitScript)
+      populator
+    }
+
     val initializer = new DataSourceInitializer
     initializer.setDataSource(dataSource)
     initializer.setDatabasePopulator(databasePopulator)
     initializer
   }
-
-  private def databasePopulator(): DatabasePopulator = {
-    val populator = new ResourceDatabasePopulator
-    populator.addScript(h2DbCreateScript)
-    populator.addScript(h2DbDataInitScript)
-    populator
-  }
-
 
   @Bean
   def transactionManager(entityManagerFactory: EntityManagerFactory): PlatformTransactionManager = {
@@ -74,6 +73,13 @@ class CommonMockDbConfig {
 
   @Bean
   def entityManagerFactory(env: Environment): LocalContainerEntityManagerFactoryBean = {
+    def jpaProperties(): Properties = {
+      val props = new Properties
+      props.put("hibernate.show_sql", "true")
+      props.put("hibernate.format_sql", "true")
+      props
+    }
+
     val vendorAdapter = new HibernateJpaVendorAdapter
     vendorAdapter.setGenerateDdl(true)
     vendorAdapter.setShowSql(true)
@@ -86,13 +92,6 @@ class CommonMockDbConfig {
     factory.setJpaProperties(jpaProperties)
     factory.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver)
     factory
-  }
-
-  private def jpaProperties(): Properties = {
-    val props = new Properties
-    props.put("hibernate.show_sql", "true")
-    props.put("hibernate.format_sql", "true")
-    props
   }
 }
 

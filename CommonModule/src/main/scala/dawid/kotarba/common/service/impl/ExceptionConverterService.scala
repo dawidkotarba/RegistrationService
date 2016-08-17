@@ -27,6 +27,15 @@ class ExceptionConverterService @Inject()(localizationService: LocalizationServi
       DateTimeUtils.formatDate(LocalDateTime.now()), getLocalizedUserMessage(ExceptionType.INTERNAL_ERROR), e.getMessage, null)
 
   def convert(e: Exception, bindingResult: BindingResult): ExceptionResponseDto = {
+    def parseBindingResult(bindingResult: BindingResult): List[ValidationError] = {
+      val validationErrors = List[ValidationError]()
+
+      bindingResult.getFieldErrors().forEach(new Consumer[FieldError] {
+        override def accept(t: FieldError): Unit = validationErrors.::(ValidationError(t.getField, t.getDefaultMessage))
+      })
+      validationErrors
+    }
+    
     val exceptionResponse = convert(e)
     exceptionResponse.validationErrors :: parseBindingResult(bindingResult)
     exceptionResponse
@@ -38,13 +47,4 @@ class ExceptionConverterService @Inject()(localizationService: LocalizationServi
     localizationService.getMessage(exceptionType.toString, params)
   else
     localizationService.getMessage(exceptionType.toString)
-
-  private def parseBindingResult(bindingResult: BindingResult): List[ValidationError] = {
-    val validationErrors = List[ValidationError]()
-
-    bindingResult.getFieldErrors().forEach(new Consumer[FieldError] {
-      override def accept(t: FieldError): Unit = validationErrors.::(ValidationError(t.getField, t.getDefaultMessage))
-    })
-    validationErrors
-  }
 }
