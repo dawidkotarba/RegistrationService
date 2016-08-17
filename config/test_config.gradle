@@ -29,4 +29,7 @@ configurations {
 }
 
 // pitest
+pitest {
+    testSourceSets = [sourceSets.test, sourceSets.itest]
+}
 build.dependsOn "pitest"

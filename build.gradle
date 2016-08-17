@@ -32,6 +32,7 @@ buildscript {
 
         // test
         scalaTestVersion = "3.0.0"
+        pitestVersion = "1.1.10"
 
         // folders
         srcDir = "src/main/scala"
@@ -55,7 +56,7 @@ buildscript {
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:${coverallsVersion}"
         classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
         classpath "org.github.ngbinh.scalastyle:gradle-scalastyle-plugin_2.11:${scalastyleVersion}"
-        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
+        classpath "info.solidsoft.gradle.pitest:gradle-pitest-plugin:${pitestVersion}"
     }
 }
 
