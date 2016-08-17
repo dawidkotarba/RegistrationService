@@ -27,3 +27,6 @@ configurations {
     itestCompile.extendsFrom testCompile
     itestRuntime.extendsFrom testRuntime
 }
+
+// pitest
+build.dependsOn "pitest"

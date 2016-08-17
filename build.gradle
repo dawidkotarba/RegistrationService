@@ -55,6 +55,7 @@ buildscript {
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:${coverallsVersion}"
         classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
         classpath "org.github.ngbinh.scalastyle:gradle-scalastyle-plugin_2.11:${scalastyleVersion}"
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
     }
 }
 
@@ -65,6 +66,7 @@ subprojects {
     apply plugin: "com.github.kt3k.coveralls"
     apply plugin: "jacoco"
     apply plugin: "io.spring.dependency-management"
+    apply plugin: "info.solidsoft.pitest"
     apply from: "../config/commons.gradle"
     apply from: "../config/test_config.gradle"
     apply from: "../config/utils_config.gradle"
