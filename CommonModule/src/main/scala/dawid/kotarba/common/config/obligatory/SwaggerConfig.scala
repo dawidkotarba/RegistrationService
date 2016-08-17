@@ -25,15 +25,15 @@ class SwaggerConfig {
       .pathMapping("/")
   }
 
-  private def getAuthorizationParameter() = new ParameterBuilder()
-    .parameterType("header")
-    .modelRef(new ModelRef("String"))
-    .required(false)
-    .name("Authorization")
-    .description("Bearer token")
-    .build()
-
   private def getCommonParameters(): java.util.List[Parameter] = {
+    def getAuthorizationParameter() = new ParameterBuilder()
+      .parameterType("header")
+      .modelRef(new ModelRef("String"))
+      .required(false)
+      .name("Authorization")
+      .description("Bearer token")
+      .build()
+
     new java.util.ArrayList[Parameter](util.Arrays.asList(getAuthorizationParameter))
   }
 }
