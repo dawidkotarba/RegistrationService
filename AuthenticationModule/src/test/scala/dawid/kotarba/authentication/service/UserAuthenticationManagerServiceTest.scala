@@ -3,10 +3,10 @@ package dawid.kotarba.authentication.service
 import java.net.URI
 import java.util
 
-import dawid.kotarba.shared.annotation.UnitTest
-import dawid.kotarba.shared.exceptions.impl.BadCredentialsException
-import dawid.kotarba.shared.service.RestTemplateService
-import dawid.kotarba.shared.service.impl.ModulesPropertiesService
+import dawid.kotarba.common.annotation.UnitTest
+import dawid.kotarba.common.exceptions.impl.BadCredentialsException
+import dawid.kotarba.common.service.RestTemplateService
+import dawid.kotarba.common.service.impl.ModulesPropertiesService
 import org.junit.{Before, Test}
 import org.mockito.Mockito._
 import org.mockito.{Mock, MockitoAnnotations}

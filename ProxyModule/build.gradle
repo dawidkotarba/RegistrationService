@@ -6,18 +6,18 @@ jar {
 }
 
 dependencies {
-    compile project(":SharedModule")
+    compile project(":CommonModule")
     compile "org.springframework.cloud:spring-cloud-starter-zuul"
 }
 
 springBoot {
-    mainClass = "dawid.kotarba.template.ProxyModule"
+    mainClass = "dawid.kotarba.proxy.ProxyModule"
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
     storeProperties("$buildDir", "application.properties", decorateCommonProperties())
     storeProperties("$buildDir", "modules.properties", createModulesProperties())
-    copySharedProperties("$buildDir")
+    copyCommonProperties("$buildDir")
 }
 
 def decorateCommonProperties() {

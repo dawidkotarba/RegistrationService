@@ -1,7 +1,7 @@
 package dawid.kotarba.users.config
 
-import dawid.kotarba.shared.annotation.DatabaseConfiguration
-import dawid.kotarba.shared.config.extendable.CommonMockDbConfig
+import dawid.kotarba.common.annotation.DatabaseConfiguration
+import dawid.kotarba.common.config.optional.CommonMockDbConfig
 
 /**
   * Created by Dawid on 03.07.2016.

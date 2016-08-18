@@ -1,6 +1,7 @@
-apply from: "modules_config.gradle"
+apply from: "config/modules_config.gradle"
 
 buildscript {
+
     ext {
         // Scala
         scalaVeresion = "2.11.8"
@@ -17,15 +18,20 @@ buildscript {
         h2DbVersion = "1.4.192"
         ehCacheVersion = "2.6.11"
 
+        // Jackson (has to match spring boot"s jackson version)
+        jacksonVersion = "2.6.6"
+
         // utils
         guavaVersion = "19.0"
-        jacksonJsr310Version = "2.8.0"
         swaggerVersion = "2.5.0"
 
         // reports
         jacocoVersion = "0.7.6.201602180812"
         coverallsVersion = "2.4.0"
         scalastyleVersion = "0.8.2"
+
+        // test
+        scalaTestVersion = "3.0.0"
 
         // folders
         srcDir = "src/main/scala"
@@ -34,6 +40,7 @@ buildscript {
         resourcesDir = "/resources/main/"
         jacocoReportPath = "build/jacoco/jacocoTest.exec"
     }
+
     repositories {
         mavenCentral()
         jcenter()
@@ -42,6 +49,7 @@ buildscript {
         maven { url "http://repo.spring.io/libs-milestone-local" }
         maven { url "http://repo.spring.io/libs-release-local" }
     }
+
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:${coverallsVersion}"
@@ -57,7 +65,9 @@ subprojects {
     apply plugin: "com.github.kt3k.coveralls"
     apply plugin: "jacoco"
     apply plugin: "io.spring.dependency-management"
-    apply from: "../commons.gradle"
+    apply from: "../config/commons.gradle"
+    apply from: "../config/test_config.gradle"
+    apply from: "../config/utils_config.gradle"
 
     dependencyManagement {
         imports {
@@ -80,8 +90,9 @@ subprojects {
 
         // Spring boot
         compile "org.springframework.boot:spring-boot-starter-web"
-        compile "org.springframework.boot:spring-boot-starter-actuator"
+        compile "org.springframework.boot:spring-boot-starter-cache"
         compile "org.springframework.boot:spring-boot-starter-security"
+        compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.springframework.boot:spring-boot-starter-activemq:${activeMqVersion}"
 
         // Spring
@@ -95,78 +106,19 @@ subprojects {
         compile "com.mysema.querydsl:querydsl-jpa:${queryDslVersion}"
         compile "com.mysema.querydsl:querydsl-apt:${queryDslVersion}:jpa"
 
+        // Jackson
+        compile "com.fasterxml.jackson.module:jackson-module-scala_2.11:${jacksonVersion}"
+
         // Swagger
         compile "io.springfox:springfox-swagger2:${swaggerVersion}"
         compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
 
         // utils
         compile "com.google.guava:guava:${guavaVersion}"
-        compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonJsr310Version}"
 
         // test
+        testCompile "org.scalatest:scalatest_2.11:${scalaTestVersion}"
         testCompile "org.springframework.boot:spring-boot-starter-test"
         testCompile "org.mockito:mockito-all:${mockitoVersion}"
-    }
-
-
-    sourceSets {
-        itest {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
-            scala.srcDir file(itestDir)
-            resources.srcDir file(resourcesDir)
-        }
-    }
-
-    // test
-    task itest(type: Test) {
-        testClassesDir = sourceSets.itest.output.classesDir
-        classpath = sourceSets.itest.runtimeClasspath
-
-        testLogging {
-            events "passed", "skipped", "failed"
-        }
-    }
-
-    configurations {
-        itestCompile.extendsFrom testCompile
-        itestRuntime.extendsFrom testRuntime
-    }
-
-    // jacoco
-    test {
-        jacoco {
-            append = true
-            destinationFile = file("../${jacocoReportPath}")
-        }
-    }
-
-    jacoco {
-        toolVersion = "${jacocoVersion}"
-    }
-
-    jacocoTestReport {
-        reports {
-            xml.enabled = true
-            html.enabled = true
-        }
-    }
-
-    // coveralls
-    tasks.coveralls {
-        dependsOn "check"
-    }
-
-    coveralls {
-        jacocoReportPath = jacocoReportPath
-    }
-
-    // scalastyle
-    scalaStyle {
-        configLocation = "scalastyle_config.xml"
-        includeTestSourceDirectory = true
-        source = srcDir
-        testSource = testDir
-        testSource += itestDir
     }
 }

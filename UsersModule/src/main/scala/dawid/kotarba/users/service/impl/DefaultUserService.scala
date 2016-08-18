@@ -2,10 +2,11 @@ package dawid.kotarba.users.service.impl
 
 import javax.inject.{Inject, Named}
 
-import dawid.kotarba.shared.exceptions.impl.NotFoundException
-import dawid.kotarba.shared.utils.PreconditionsUtils
-import dawid.kotarba.users.dao.UserDao
+import dawid.kotarba.common.exceptions.impl.NotFoundException
+import dawid.kotarba.common.utils.PreconditionsUtils
+import dawid.kotarba.users.converter.UserConverter
 import dawid.kotarba.users.dto.UserDto
+import dawid.kotarba.users.repository.UserRepository
 import dawid.kotarba.users.service.UserService
 
 /**
@@ -13,10 +14,11 @@ import dawid.kotarba.users.service.UserService
   */
 
 @Named
-class DefaultUserService @Inject()(private val userDao: UserDao) extends UserService {
+class DefaultUserService @Inject()(userRepository: UserRepository) extends UserService {
   override def findByUsername(username: String): UserDto = {
     PreconditionsUtils.checkNotNull(username, "username")
-    val result = userDao.findByUsername(username)
-    if (result.isDefined) result.get else throw new NotFoundException("Cannot find user:" + username)
+    val userList = userRepository.findByUsername(username)
+    if (userList.isEmpty) throw new NotFoundException("Cannot find user:" + username)
+    UserConverter.toDto(userList.get(0))
   }
 }

@@ -1,2 +1,2 @@
-include ":SharedModule"
-project(":SharedModule").projectDir = new File(settingsDir, "../SharedModule")
+include ":CommonModule"
+project(":CommonModule").projectDir = new File(settingsDir, "../CommonModule")

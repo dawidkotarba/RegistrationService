@@ -1,0 +1,29 @@
+sourceSets {
+    itest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+        scala.srcDir file(itestDir)
+        resources.srcDir file(resourcesDir)
+    }
+}
+
+// test
+task itest(type: Test) {
+    testClassesDir = sourceSets.itest.output.classesDir
+    classpath = sourceSets.itest.runtimeClasspath
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+configurations {
+    itestCompile.extendsFrom testCompile
+    itestRuntime.extendsFrom testRuntime
+}
