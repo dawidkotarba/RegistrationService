@@ -30,7 +30,7 @@ class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
 class OAuthResourceServerConfig extends ResourceServerConfigurerAdapter {
 
   @Value("${oauth.token.endpoint}")
-  private val oauthTokenEndpoint: java.lang.String = null
+  private val oauthTokenEndpoint: String = null
 
   @Value("${auth.username}")
   private val authClient: String = null
@@ -38,9 +38,7 @@ class OAuthResourceServerConfig extends ResourceServerConfigurerAdapter {
   @Value("${auth.secret}")
   private val authSecret: String = null
 
-  override def configure(http: HttpSecurity): Unit = {
-    http.authorizeRequests.anyRequest.authenticated
-  }
+  override def configure(http: HttpSecurity): Unit = http.authorizeRequests.anyRequest.authenticated
 
   @Bean
   def resourceServerTokenServices(): ResourceServerTokenServices = {
