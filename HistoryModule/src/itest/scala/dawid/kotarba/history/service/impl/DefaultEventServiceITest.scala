@@ -27,13 +27,13 @@ import org.springframework.test.context.junit4.SpringRunner
 class DefaultEventServiceITest {
 
   @Inject
-  val underTest: DefaultEventService = null
+  private val underTest: DefaultEventService = null
 
   @Inject
-  val eventRepository: EventRepository = null
+  private val eventRepository: EventRepository = null
 
   @Inject
-  val eventTypeRepository: EventTypeRepository = null
+  private val eventTypeRepository: EventTypeRepository = null
 
   private val TEST_ID = 1L
   private val TEST_USERNAME = "username"

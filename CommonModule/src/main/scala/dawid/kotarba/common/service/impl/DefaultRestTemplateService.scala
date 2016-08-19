@@ -12,7 +12,7 @@ import org.springframework.web.client.{AsyncRestTemplate, RestTemplate}
   * Created by Dawid on 16.07.2016.
   */
 @Named
-class DefaultRestTemplateService @Inject()(val restTemplate: RestTemplate, val asyncRestTemplate: AsyncRestTemplate)
+class DefaultRestTemplateService @Inject()(restTemplate: RestTemplate, asyncRestTemplate: AsyncRestTemplate)
   extends RestTemplateService {
 
   override def exchangeAsync[MESSAGE, RESPONSE](url: String, method: HttpMethod, message: MESSAGE, responseClass: java.lang.Class[RESPONSE]): ListenableFuture[ResponseEntity[RESPONSE]] =

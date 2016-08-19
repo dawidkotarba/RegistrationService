@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.{ControllerAdvice, ExceptionHandl
   */
 
 @ControllerAdvice
-class ExceptionControllerAdvice @Inject()(val exceptionConverterService: ExceptionConverterService) {
+class ExceptionControllerAdvice @Inject()(exceptionConverterService: ExceptionConverterService) {
 
   @ExceptionHandler(value = Array(classOf[Exception]))
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -28,14 +28,14 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
   @Inject
-  val authManager: AuthenticationManager = null
-  val tokenStore = new InMemoryTokenStore
+  private val authManager: AuthenticationManager = null
+  private val tokenStore = new InMemoryTokenStore
 
   @Value("${auth.username}")
-  val authClient: String = null
+  private val authClient: String = null
 
   @Value("${auth.secret}")
-  val authSecret: String = null
+  private val authSecret: String = null
 
   override def configure(security: AuthorizationServerSecurityConfigurer): Unit = security.checkTokenAccess("permitAll()")
 

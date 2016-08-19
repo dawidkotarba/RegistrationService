@@ -15,7 +15,7 @@ import org.springframework.core.io.Resource
 class CommonCacheConfig {
 
   @Value("classpath:ehcache.xml")
-  val ehCacheConfiguration: Resource = null
+  private val ehCacheConfiguration: Resource = null
 
   @Bean
   def getEhCacheManager(): CacheManager = {

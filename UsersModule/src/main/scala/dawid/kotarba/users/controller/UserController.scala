@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation._
 
 @RestController
 @RequestMapping(value = Array("/users"), produces = Array(MediaType.APPLICATION_JSON_VALUE))
-class UserController @Inject()(private val userService: UserService) {
+class UserController @Inject()(userService: UserService) {
 
   @RequestMapping(value = Array("/{username}"), method = Array(RequestMethod.GET))
   def getUserByUsername(@PathVariable username: String): UserDto =

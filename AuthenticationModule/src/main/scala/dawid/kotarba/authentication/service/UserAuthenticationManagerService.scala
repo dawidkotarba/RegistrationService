@@ -17,8 +17,8 @@ import org.springframework.util.StringUtils
   */
 
 @Named
-class UserAuthenticationManagerService @Inject()(private val restTemplateService: RestTemplateService,
-                                                 private val modulesPropertiesService: ModulesPropertiesService)
+class UserAuthenticationManagerService @Inject()(restTemplateService: RestTemplateService,
+                                                 modulesPropertiesService: ModulesPropertiesService)
   extends AuthenticationManager {
 
   override def authenticate(authentication: Authentication): Authentication = {

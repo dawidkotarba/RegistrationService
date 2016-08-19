@@ -11,7 +11,7 @@ import org.springframework.context.MessageSource
   */
 
 @Named
-class DefaultLocalizationService @Inject()(val messageSource: MessageSource, val localizationConfig: LocalizationConfig)
+class DefaultLocalizationService @Inject()(messageSource: MessageSource, localizationConfig: LocalizationConfig)
   extends LocalizationService {
 
   def getMessage(code: String): String = messageSource.getMessage(code, null, localizationConfig.getDefaultLocale)

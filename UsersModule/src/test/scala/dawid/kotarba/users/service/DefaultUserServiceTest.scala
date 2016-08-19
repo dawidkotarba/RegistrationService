@@ -17,13 +17,13 @@ import org.mockito.{ArgumentCaptor, Captor, Mock, MockitoAnnotations}
 @UnitTest
 class DefaultUserServiceTest {
 
-  var underTest: DefaultUserService = null
+  private var underTest: DefaultUserService = null
 
   @Mock
-  val userRepository: UserRepository = null
+  private val userRepository: UserRepository = null
 
   @Captor
-  val usernameCaptor = ArgumentCaptor.forClass(classOf[String])
+  private val usernameCaptor = ArgumentCaptor.forClass(classOf[String])
 
   @Before
   def setUp(): Unit = {

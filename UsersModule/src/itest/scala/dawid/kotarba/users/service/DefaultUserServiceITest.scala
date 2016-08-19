@@ -27,15 +27,15 @@ import org.springframework.test.context.junit4.SpringRunner
 class DefaultUserServiceITest {
 
   @Inject
-  val underTest: DefaultUserService = null
+  private val underTest: DefaultUserService = null
 
   @Inject
-  val userRepository: UserRepository = null
+  private val userRepository: UserRepository = null
 
-  val TEST_USERNAME = "username"
-  val TEST_IS_ENABLED = true
-  val TEST_PASSWORD = "test"
-  val TEST_ROLE = "role"
+  private val TEST_USERNAME = "username"
+  private val TEST_IS_ENABLED = true
+  private val TEST_PASSWORD = "test"
+  private val TEST_ROLE = "role"
 
   @Test
   def findByUsername(): Unit = {
