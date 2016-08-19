@@ -15,7 +15,7 @@ class DefaultJmsServiceTest {
   val underTest = new DefaultJmsService
 
   @Test
-  def test(): Unit = {
+  def test: Unit = {
     // given:
     val testQueueName = "testQueue"
     val connection = underTest.createConnection("vm://localhost?broker.persistent=false")

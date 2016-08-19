@@ -24,7 +24,7 @@ class DefaultEventService @Inject()(eventRepository: EventRepository,
 
   override def add(@Valid eventDto: EventDto): Long = {
     PreconditionsUtils.checkNotNull(eventDto, "eventDto")
-    eventRepository.save(EventConverter.toEntity(eventDto, getEventType(eventDto.eventType))).getId()
+    eventRepository.save(EventConverter.toEntity(eventDto, getEventType(eventDto.eventType))).getId
   }
 
   override def getEventType(eventTypeEnum: EventTypeEnum): EventType = {

@@ -32,7 +32,7 @@ class DefaultUserServiceTest {
   }
 
   @Test(expected = classOf[NotFoundException])
-  def findByUsernameForNoUsers(): Unit = {
+  def findByUsernameForNoUsers: Unit = {
     // given:
     val testUserName = "testUser"
     val users = new java.util.ArrayList[User]
@@ -43,7 +43,7 @@ class DefaultUserServiceTest {
   }
 
   @Test
-  def findByUsernameForValidUser(): Unit = {
+  def findByUsernameForValidUser: Unit = {
     // given:
     val testUserName = "testUser"
     val user = new User
@@ -62,6 +62,5 @@ class DefaultUserServiceTest {
   }
 
   @Test(expected = classOf[NullPointerException])
-  def findByUsernameForNull(): Unit =
-    underTest.findByUsername(null)
+  def findByUsernameForNull: Unit = underTest.findByUsername(null)
 }

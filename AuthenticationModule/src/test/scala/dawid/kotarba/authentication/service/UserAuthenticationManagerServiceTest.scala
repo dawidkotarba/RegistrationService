@@ -36,7 +36,7 @@ class UserAuthenticationManagerServiceTest {
   }
 
   @Test(expected = classOf[BadCredentialsException])
-  def authenticateForEmptyResponse(): Unit = {
+  def authenticateForEmptyResponse: Unit = {
     // given:
     val usersModuleName = "Users_Module"
     when(modulesPropertiesService.usersModuleName).thenReturn(usersModuleName)
@@ -76,7 +76,7 @@ class UserAuthenticationManagerServiceTest {
   }
 
   @Test(expected = classOf[NullPointerException])
-  def authenticateWithNullAuthentication(): Unit = {
+  def authenticateWithNullAuthentication: Unit = {
     // given:
     val authentication = null
 
@@ -85,7 +85,7 @@ class UserAuthenticationManagerServiceTest {
   }
 
   @Test(expected = classOf[BadCredentialsException])
-  def authenticateWithEmptyUsername(): Unit = {
+  def authenticateWithEmptyUsername: Unit = {
     // given:
     val authentication = new Authentication {
       override def getDetails: AnyRef = null
@@ -108,7 +108,7 @@ class UserAuthenticationManagerServiceTest {
   }
 
   @Test(expected = classOf[BadCredentialsException])
-  def authenticateWithEmptyPassword(): Unit = {
+  def authenticateWithEmptyPassword: Unit = {
     // given:
     val authentication = new Authentication {
       override def getDetails: AnyRef = null

@@ -27,14 +27,14 @@ object SecurityUtils {
     DigestUtils.md5DigestAsHex(data.getBytes())
   }
 
-  def getAuthBearerHttpHeaders(): HttpHeaders = {
+  def getAuthBearerHttpHeaders: HttpHeaders = {
     val httpHeaders = new HttpHeaders
     httpHeaders.setContentType(MediaType.APPLICATION_JSON)
     httpHeaders.set("Authorization", "Bearer " + getOauthToken)
     httpHeaders
   }
 
-  def getOauthToken(): String = {
+  def getOauthToken: String = {
     val details = SecurityContextHolder.getContext.getAuthentication.getDetails
     if (details.isInstanceOf[OAuth2AuthenticationDetails])
       details.asInstanceOf[OAuth2AuthenticationDetails].getTokenValue

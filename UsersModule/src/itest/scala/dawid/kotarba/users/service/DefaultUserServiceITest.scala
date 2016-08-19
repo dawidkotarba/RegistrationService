@@ -38,7 +38,7 @@ class DefaultUserServiceITest {
   private val TEST_ROLE = "role"
 
   @Test
-  def findByUsername(): Unit = {
+  def findByUsername: Unit = {
     // given:
     val testUser = new User
     testUser.username = TEST_USERNAME

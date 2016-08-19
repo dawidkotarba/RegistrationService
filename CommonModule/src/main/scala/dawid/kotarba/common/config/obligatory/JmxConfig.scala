@@ -20,7 +20,7 @@ class JmxConfig {
   private val rmiPort: Integer = null
 
   @Bean
-  def rmiRegistry(): RmiRegistryFactoryBean = {
+  def rmiRegistry: RmiRegistryFactoryBean = {
     val rmiRegistryFactoryBean = new RmiRegistryFactoryBean
     rmiRegistryFactoryBean.setPort(rmiPort)
     rmiRegistryFactoryBean.setAlwaysCreate(true)
@@ -29,7 +29,7 @@ class JmxConfig {
 
   @Bean
   @DependsOn(Array("rmiRegistry"))
-  def connectorServerFactoryBean(): ConnectorServerFactoryBean = {
+  def connectorServerFactoryBean: ConnectorServerFactoryBean = {
     val connectorServerFactoryBean = new ConnectorServerFactoryBean
     connectorServerFactoryBean.setObjectName("connector:name=rmi")
     connectorServerFactoryBean.setServiceUrl(

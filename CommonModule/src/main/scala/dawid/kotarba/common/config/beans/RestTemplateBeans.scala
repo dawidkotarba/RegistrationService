@@ -11,9 +11,9 @@ import org.springframework.web.client.{AsyncRestTemplate, RestTemplate}
 class RestTemplateBeans {
 
   @Bean
-  def restTemplate(): RestTemplate = new RestTemplate
+  def restTemplate: RestTemplate = new RestTemplate
 
   @Bean
-  def asyncRestTemplate(): AsyncRestTemplate = new AsyncRestTemplate
+  def asyncRestTemplate: AsyncRestTemplate = new AsyncRestTemplate
 
 }

@@ -16,8 +16,8 @@ trait AbstractEntity extends HasId[Long] with HasVersion[Integer] {
   @Version
   protected val version: Integer = null
 
-  override def getId(): Long = id
+  override def getId: Long = id
 
-  override def getVersion(): Integer = version
+  override def getVersion: Integer = version
 
 }

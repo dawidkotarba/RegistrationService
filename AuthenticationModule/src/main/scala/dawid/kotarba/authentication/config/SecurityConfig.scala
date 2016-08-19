@@ -51,7 +51,7 @@ class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
     endpoints.tokenStore(tokenStore).authenticationManager(authManager)
 
   @Bean
-  def tokenServices(): DefaultTokenServices = {
+  def tokenServices: DefaultTokenServices = {
     val tokenServices = new DefaultTokenServices
     tokenServices.setSupportRefreshToken(true)
     tokenServices.setTokenStore(tokenStore)

@@ -42,7 +42,7 @@ class CommonMockDbConfig {
   }
 
   @Bean
-  def h2servletRegistration(): ServletRegistrationBean = {
+  def h2servletRegistration: ServletRegistrationBean = {
     val registrationBean = new ServletRegistrationBean(new WebServlet)
     registrationBean.addUrlMappings(dbContextPath)
     registrationBean
@@ -51,7 +51,7 @@ class CommonMockDbConfig {
   @Bean
   @Inject
   def dataSourceInitializer(dataSource: DataSource): DataSourceInitializer = {
-    def databasePopulator(): DatabasePopulator = {
+    def databasePopulator: DatabasePopulator = {
       val populator = new ResourceDatabasePopulator
       populator.addScript(h2DbCreateScript)
       populator.addScript(h2DbDataInitScript)
@@ -73,7 +73,7 @@ class CommonMockDbConfig {
 
   @Bean
   def entityManagerFactory(env: Environment): LocalContainerEntityManagerFactoryBean = {
-    def jpaProperties(): Properties = {
+    def jpaProperties: Properties = {
       val props = new Properties
       props.put("hibernate.show_sql", "true")
       props.put("hibernate.format_sql", "true")

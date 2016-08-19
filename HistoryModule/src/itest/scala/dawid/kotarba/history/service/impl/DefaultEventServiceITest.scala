@@ -41,7 +41,7 @@ class DefaultEventServiceITest {
   private val TEST_DESCRIPTION = "desc"
 
   @Test
-  def add(): Unit = {
+  def add: Unit = {
     // given:
     assertTrue(eventRepository.findAll().isEmpty)
     val eventDto = EventDto(TEST_USERNAME, TEST_EVENT_TYPE_ENUM, TEST_DESCRIPTION)
@@ -61,7 +61,7 @@ class DefaultEventServiceITest {
   }
 
   @Test
-  def getEventType(): Unit = {
+  def getEventType: Unit = {
     // given:
     val logInEnum = EventTypeEnum.LOG_IN
 
@@ -73,7 +73,7 @@ class DefaultEventServiceITest {
   }
 
   @Test
-  def findByUsername(): Unit = {
+  def findByUsername: Unit = {
     // given:
     val testEvent = new Event
     testEvent.eventType = eventTypeRepository.findByEventType(TEST_EVENT_TYPE_ENUM.toString).get(0)

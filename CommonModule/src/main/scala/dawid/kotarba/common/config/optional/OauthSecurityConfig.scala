@@ -41,7 +41,7 @@ class OAuthResourceServerConfig extends ResourceServerConfigurerAdapter {
   override def configure(http: HttpSecurity): Unit = http.authorizeRequests.anyRequest.authenticated
 
   @Bean
-  def resourceServerTokenServices(): ResourceServerTokenServices = {
+  def resourceServerTokenServices: ResourceServerTokenServices = {
     val remoteTokenServices = new RemoteTokenServices
     remoteTokenServices.setCheckTokenEndpointUrl(oauthTokenEndpoint)
     remoteTokenServices.setClientId(authClient)

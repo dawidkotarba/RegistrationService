@@ -12,7 +12,7 @@ import org.springframework.core.io.ClassPathResource
 class PropertiesConfig {
 
   @Bean
-  def properties(): PropertySourcesPlaceholderConfigurer = {
+  def properties: PropertySourcesPlaceholderConfigurer = {
     val configurer = new PropertySourcesPlaceholderConfigurer
     configurer.setLocations(new ClassPathResource("application.properties"),
       new ClassPathResource("modules.properties"))

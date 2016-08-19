@@ -29,28 +29,28 @@ class LocalizationConfig extends WebMvcConfigurerAdapter {
   }
 
   @Bean
-  def localeResolver(): LocaleResolver = {
+  def localeResolver: LocaleResolver = {
     val slr = new SessionLocaleResolver
     slr.setDefaultLocale(defaultLocale)
     slr
   }
 
   @Bean
-  def localeChangeInterceptor(): LocaleChangeInterceptor = {
+  def localeChangeInterceptor: LocaleChangeInterceptor = {
     val lci = new LocaleChangeInterceptor
     lci.setParamName("lang")
     lci
   }
 
   @Bean
-  def messageSource(): ReloadableResourceBundleMessageSource = {
+  def messageSource: ReloadableResourceBundleMessageSource = {
     val messageSource = new ReloadableResourceBundleMessageSource
     messageSource.setBasenames("classpath:i18n/shared_messages", "classpath:i18n/messages",
       "classpath:exceptions/shared_exceptions", "classpath:exceptions/exceptions")
     messageSource
   }
 
-  override def addInterceptors(registry: InterceptorRegistry): Unit = registry.addInterceptor(localeChangeInterceptor())
+  override def addInterceptors(registry: InterceptorRegistry): Unit = registry.addInterceptor(localeChangeInterceptor)
 
-  def getDefaultLocale(): Locale = defaultLocale
+  def getDefaultLocale: Locale = defaultLocale
 }

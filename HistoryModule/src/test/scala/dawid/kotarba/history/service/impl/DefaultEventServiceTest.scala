@@ -48,7 +48,7 @@ class DefaultEventServiceTest {
   }
 
   @Test
-  def add(): Unit = {
+  def add: Unit = {
     // given:
     val eventDto = EventDto(TEST_USERNAME, EventTypeEnum.LOG_IN, TEST_DESCRIPTION)
     val savedEvent = new Event
@@ -66,7 +66,7 @@ class DefaultEventServiceTest {
   }
 
   @Test
-  def getEventTypeForEmptySavedType(): Unit = {
+  def getEventTypeForEmptySavedType: Unit = {
     // given:
     val savedEventType = new EventType
     savedEventType.eventType = TEST_EVENT_TYPE_ENUM.toString
@@ -83,7 +83,7 @@ class DefaultEventServiceTest {
   }
 
   @Test
-  def findByUsername(): Unit = {
+  def findByUsername: Unit = {
     // given:
     val resultEvent = new Event
     val resultEventType = new EventType

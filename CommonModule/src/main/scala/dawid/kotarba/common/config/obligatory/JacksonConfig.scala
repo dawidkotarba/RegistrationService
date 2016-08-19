@@ -12,7 +12,7 @@ import org.springframework.context.annotation.{Bean, Configuration}
 class JacksonConfig {
 
   @Bean
-  def objectMapper(): ObjectMapper = {
+  def objectMapper: ObjectMapper = {
     val mapper = new ObjectMapper
     mapper.registerModule(DefaultScalaModule)
   }

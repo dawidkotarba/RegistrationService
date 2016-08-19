@@ -17,23 +17,22 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @EnableSwagger2
 @Profile(Array("!test"))
 class SwaggerConfig {
+  def api: Docket = {
+    def getCommonParameters: java.util.List[Parameter] = {
+      def getAuthorizationParameter() = new ParameterBuilder()
+        .parameterType("header")
+        .modelRef(new ModelRef("String"))
+        .required(false)
+        .name("Authorization")
+        .description("Bearer token")
+        .build()
 
-  def api(): Docket = {
+      new java.util.ArrayList[Parameter](util.Arrays.asList(getAuthorizationParameter))
+    }
+
     new Docket(DocumentationType.SWAGGER_2).select.apis(RequestHandlerSelectors.any)
       .paths(PathSelectors.any).build
       .globalOperationParameters(getCommonParameters)
       .pathMapping("/")
-  }
-
-  private def getCommonParameters(): java.util.List[Parameter] = {
-    def getAuthorizationParameter() = new ParameterBuilder()
-      .parameterType("header")
-      .modelRef(new ModelRef("String"))
-      .required(false)
-      .name("Authorization")
-      .description("Bearer token")
-      .build()
-
-    new java.util.ArrayList[Parameter](util.Arrays.asList(getAuthorizationParameter))
   }
 }

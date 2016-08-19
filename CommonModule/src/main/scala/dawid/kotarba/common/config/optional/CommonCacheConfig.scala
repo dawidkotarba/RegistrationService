@@ -18,12 +18,12 @@ class CommonCacheConfig {
   private val ehCacheConfiguration: Resource = null
 
   @Bean
-  def getEhCacheManager(): CacheManager = {
+  def getEhCacheManager: CacheManager = {
     new EhCacheCacheManager(ehCacheFactoryBean.getObject)
   }
 
   @Bean
-  def ehCacheFactoryBean(): EhCacheManagerFactoryBean = {
+  def ehCacheFactoryBean: EhCacheManagerFactoryBean = {
     val factoryBean = new EhCacheManagerFactoryBean
     factoryBean.setConfigLocation(ehCacheConfiguration)
     factoryBean.setShared(true)
