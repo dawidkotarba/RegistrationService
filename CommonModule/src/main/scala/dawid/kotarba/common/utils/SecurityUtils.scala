@@ -21,6 +21,8 @@ object SecurityUtils {
       "/swagger-resources/configuration/ui", "/swagger-resources",
       "/configuration/security", "/swagger-ui.html", "/webjars/**")
 
+  def ignoreH2Pages(web: WebSecurity): Unit = web.ignoring.antMatchers("/db/**")
+
   def md5(data: String): String = {
     DigestUtils.md5DigestAsHex(data.getBytes())
   }

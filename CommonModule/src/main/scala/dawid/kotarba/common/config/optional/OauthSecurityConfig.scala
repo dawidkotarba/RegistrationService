@@ -20,7 +20,10 @@ class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
     SecurityUtils.disableCsrfAndFrameOptions(http)
   }
 
-  override def configure(web: WebSecurity): Unit = SecurityUtils.ignoreSwaggerPages(web)
+  override def configure(web: WebSecurity): Unit = {
+    SecurityUtils.ignoreSwaggerPages(web)
+    SecurityUtils.ignoreH2Pages(web)
+  }
 }
 
 @EnableResourceServer
@@ -30,12 +33,14 @@ class OAuthResourceServerConfig extends ResourceServerConfigurerAdapter {
   private val oauthTokenEndpoint: java.lang.String = null
 
   @Value("${auth.username}")
-  val authClient: String = null
+  private val authClient: String = null
 
   @Value("${auth.secret}")
-  val authSecret: String = null
+  private val authSecret: String = null
 
-  override def configure(http: HttpSecurity): Unit = http.authorizeRequests.anyRequest.authenticated
+  override def configure(http: HttpSecurity): Unit = {
+    http.authorizeRequests.anyRequest.authenticated
+  }
 
   @Bean
   def resourceServerTokenServices(): ResourceServerTokenServices = {
