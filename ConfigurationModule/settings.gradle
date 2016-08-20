@@ -1,0 +1,2 @@
+include ":CommonModule"
+project(":CommonModule").projectDir = new File(settingsDir, "../CommonModule")

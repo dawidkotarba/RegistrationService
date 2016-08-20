@@ -1,0 +1,30 @@
+apply plugin: "spring-boot"
+
+jar {
+    baseName = configurationModuleName
+    version = jarVersion
+}
+
+dependencies {
+    compile project(":CommonModule")
+    compile "org.springframework.cloud:spring-cloud-config-server"
+}
+
+springBoot {
+    mainClass = "dawid.kotarba.configuration.ConfigurationModule"
+}
+
+task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", "application.properties", decorateCommonProperties(createCommonProperties()))
+    storeProperties("$buildDir", "modules.properties", createModulesProperties())
+    copyCommonProperties("$buildDir")
+}
+
+classes {
+    dependsOn createPropertiesFile
+}
+
+def decorateCommonProperties(props) {
+    props.setProperty("spring.cloud.config.server.git.uri", "https://github.com/dawidkotarba/RegistrationService/tree/master/ConfigurationModule")
+    return props
+}
