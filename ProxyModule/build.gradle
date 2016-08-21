@@ -1,7 +1,7 @@
 apply plugin: "spring-boot"
 
 jar {
-    baseName = proxyModuleName
+    baseName = applicationName
     version = jarVersion
 }
 
@@ -15,8 +15,8 @@ springBoot {
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
+    storeProperties("$buildDir", "bootstrap.properties", createBootstrapProperties(applicationName))
     storeProperties("$buildDir", "application.properties", decorateCommonProperties())
-    storeProperties("$buildDir", "modules.properties", createModulesProperties())
     copyCommonProperties("$buildDir")
 }
 

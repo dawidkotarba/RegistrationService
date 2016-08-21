@@ -1,7 +1,7 @@
 apply plugin: "spring-boot"
 
 jar {
-    baseName = configurationModuleName
+    baseName = applicationName
     version = jarVersion
 }
 
@@ -15,8 +15,7 @@ springBoot {
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
-    storeProperties("$buildDir", "application.properties", decorateCommonProperties(createCommonProperties()))
-    storeProperties("$buildDir", "modules.properties", createModulesProperties())
+    storeProperties("$buildDir", "bootstrap.properties", createBootstrapProperties(applicationName))
     copyCommonProperties("$buildDir")
 }
 
@@ -25,6 +24,7 @@ classes {
 }
 
 def decorateCommonProperties(props) {
-    props.setProperty("spring.cloud.config.server.git.uri", "https://github.com/dawidkotarba/RegistrationService/tree/master/ConfigurationModule")
+    props.setProperty("spring.profiles.active", "native")
+    props.setProperty("spring.cloud.config.server.native.searchLocations", "classpath:config/")
     return props
 }

@@ -1,5 +1,5 @@
 jar {
-    baseName = serviceDiscoveryModuleName
+    baseName = applicationName
     version = jarVersion
 }
 
@@ -22,7 +22,7 @@ dependencies {
 
 task createPropertiesFile(dependsOn: processResources) << {
     storeProperties("$buildDir", "application.properties", decorateCommonProperties())
-    storeProperties("$buildDir", "modules.properties", createModulesProperties())
+    storeProperties("$buildDir", "bootstrap.properties", createBootstrapProperties(applicationName))
     copyCommonProperties("$buildDir")
 }
 
