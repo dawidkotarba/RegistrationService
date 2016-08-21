@@ -16,13 +16,11 @@ springBoot {
 
 task createPropertiesFile(dependsOn: processResources) << {
     storeProperties("$buildDir", "bootstrap.properties", createBootstrapProperties(applicationName))
-    storeProperties("$buildDir", "application.properties", decorateCommonProperties())
+    storeProperties(configFolderPath, "${applicationName}.properties", decorateCommonProperties(createCommonProperties()))
     copyCommonProperties("$buildDir")
 }
 
-def decorateCommonProperties() {
-    def props = createCommonProperties()
-
+def decorateCommonProperties(props) {
     // Zuul routing
     addZuulProperties(props, authenticationModuleName)
     addZuulProperties(props, usersModuleName)

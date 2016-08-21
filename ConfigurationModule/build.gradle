@@ -16,15 +16,16 @@ springBoot {
 
 task createPropertiesFile(dependsOn: processResources) << {
     storeProperties("$buildDir", "bootstrap.properties", createBootstrapProperties(applicationName))
+    storeProperties(configFolderPath, "${applicationName}.properties", decorateCommonProperties(createCommonProperties()))
     copyCommonProperties("$buildDir")
-}
-
-classes {
-    dependsOn createPropertiesFile
 }
 
 def decorateCommonProperties(props) {
     props.setProperty("spring.profiles.active", "native")
     props.setProperty("spring.cloud.config.server.native.searchLocations", "classpath:config/")
     return props
+}
+
+classes {
+    dependsOn createPropertiesFile
 }

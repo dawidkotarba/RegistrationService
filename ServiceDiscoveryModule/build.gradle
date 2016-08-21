@@ -21,14 +21,12 @@ dependencies {
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
-    storeProperties("$buildDir", "application.properties", decorateCommonProperties())
     storeProperties("$buildDir", "bootstrap.properties", createBootstrapProperties(applicationName))
+    storeProperties(configFolderPath, "${applicationName}.properties", decorateCommonProperties(createCommonProperties()))
     copyCommonProperties("$buildDir")
 }
 
-def decorateCommonProperties() {
-    def props = createCommonProperties()
-
+def decorateCommonProperties(props) {
     // Eureka
     props.setProperty("eureka.client.registerWithEureka", "false")
     props.setProperty("eureka.client.fetchRegistry", "false")

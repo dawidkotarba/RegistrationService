@@ -6,7 +6,7 @@ ext {
         propertiesFile.store(path.newWriter(), null)
     }
 
-    addAuthenticationProperties = { props ->
+    addOAuthAuthenticationProperties = { props ->
         // module:registrationSv => bW9kdWxlOnJlZ2lzdHJhdGlvblN2 (Base64)
         props.setProperty("auth.username", "module")
         props.setProperty("auth.secret", "registrationSv")
@@ -37,7 +37,7 @@ ext {
         props.setProperty("jmx.rmi.port", jmxPort)
         props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaHost}:${eurekaPort}/eureka/")
         props.setProperty("proxy.url", "http://${proxyHost}:${proxyPort}")
-        addAuthenticationProperties(props)
+        addOAuthAuthenticationProperties(props)
         addModulesNames(props)
         return props
     }
