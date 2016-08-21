@@ -74,6 +74,7 @@ subprojects {
     dependencyManagement {
         imports {
             mavenBom "org.springframework.cloud:spring-cloud-netflix:1.1.2.RELEASE"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.RELEASE"
         }
     }
 
@@ -97,9 +98,12 @@ subprojects {
         compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.springframework.boot:spring-boot-starter-activemq:${activeMqVersion}"
 
+        // Spring cloud
+        compile "org.springframework.cloud:spring-cloud-starter-config"
+        compile "org.springframework.cloud:spring-cloud-starter-eureka"
+
         // Spring
         compile "org.springframework.security.oauth:spring-security-oauth2"
-        compile "org.springframework.cloud:spring-cloud-starter-eureka"
 
         // db
         compile "org.springframework.boot:spring-boot-starter-data-jpa"

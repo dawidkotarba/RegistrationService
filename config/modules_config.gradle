@@ -20,6 +20,10 @@ allprojects {
         proxyModuleName = "proxy"
         configurationModuleName = "configuration"
 
+        // Config server
+        configHost = localhost
+        configPort = "8888"
+
         // Eureka Service Discovery
         eurekaHost = localhost
         eurekaPort = "8080"
@@ -100,8 +104,8 @@ project(":UserInterfaceModule") {
 project(":ConfigurationModule") {
     ext {
         applicationName = configurationModuleName
-        serverPort = "8087"
+        serverPort = configPort
         jmxHost = localhost
-        jmxPort = "9097"
+        jmxPort = "9888"
     }
 }

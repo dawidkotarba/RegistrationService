@@ -14,6 +14,13 @@ ext {
         return props
     }
 
+    createBootstrapProperties = { ->
+        Properties props = new Properties()
+        props.setProperty("spring.application.name", applicationName)
+        props.setProperty("server.port", serverPort)
+        props.setProperty("spring.cloud.config.uri", "http://${configHost}:${configPort}")
+    }
+
     createCommonProperties = { ->
         Properties props = new Properties()
         props.setProperty("spring.application.name", applicationName)
