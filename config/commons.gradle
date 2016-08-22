@@ -29,27 +29,18 @@ ext {
     createBootstrapProperties = { props, buildDir ->
         props.setProperty("spring.application.name", applicationName)
         props.setProperty("server.port", serverPort)
+        props.setProperty("default.locale", defaultLocale)
         props.setProperty("jmx.rmi.host", jmxHost)
         props.setProperty("jmx.rmi.port", jmxPort)
         props.setProperty("spring.cloud.config.uri", "http://${configHost}:${configPort}")
-
+        props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaHost}:${eurekaPort}/eureka/")
+        props.setProperty("proxy.url", "http://${proxyHost}:${proxyPort}")
         createFile("${buildDir}/${resourcesDir}", "bootstrap.properties", props)
     }
 
     createCommonProperties = { props ->
-        props.setProperty("default.locale", defaultLocale)
-        props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaHost}:${eurekaPort}/eureka/")
-        props.setProperty("proxy.url", "http://${proxyHost}:${proxyPort}")
         addOAuthAuthenticationProperties(props)
         addModulesNames(props)
-
         createFile(configFolderPath, "${applicationName}.properties", props)
-    }
-
-    copyCommonProperties = { buildDir ->
-        copy {
-            from("../CommonModule/src/main/resources")
-            into("${buildDir}${resourcesDir}")
-        }
     }
 }

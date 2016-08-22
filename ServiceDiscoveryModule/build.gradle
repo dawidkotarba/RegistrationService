@@ -23,7 +23,6 @@ dependencies {
 task createPropertiesFile(dependsOn: processResources) << {
     createBootstrapProperties(new Properties(), buildDir)
     createCommonProperties(decorateCommonProperties(new Properties()))
-    copyCommonProperties(buildDir)
 }
 
 def decorateCommonProperties(props) {

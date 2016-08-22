@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property resource="application.properties"/>
+    <property resource="bootstrap.properties"/>
     <property name="LOG_PATH" value="/RegistrationService/logs/${spring.application.name}"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
