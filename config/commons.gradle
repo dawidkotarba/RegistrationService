@@ -43,7 +43,7 @@ ext {
         addOAuthAuthenticationProperties(props)
         addModulesNames(props)
 
-        createFile("ConfigurationModule/config", "${applicationName}.properties", props)
+        createFile(configFolderPath, "${applicationName}.properties", props)
     }
 
     copyCommonProperties = { buildDir ->

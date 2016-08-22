@@ -23,7 +23,7 @@ allprojects {
         // Config server
         configHost = localhost
         configPort = "8888"
-        configFolderPath = "ConfigurationModule/build/resources/main/config"
+        configFolderPath = "ConfigurationModule/config"
 
         // Eureka Service Discovery
         eurekaHost = localhost

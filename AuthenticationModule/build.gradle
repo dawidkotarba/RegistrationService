@@ -15,6 +15,7 @@ springBoot {
 
 task createPropertiesFile(dependsOn: processResources) << {
     createBootstrapProperties(new Properties(), buildDir)
+    createCommonProperties(new Properties())
     copyCommonProperties(buildDir)
 }
 
