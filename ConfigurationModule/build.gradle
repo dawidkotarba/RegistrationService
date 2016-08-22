@@ -15,9 +15,9 @@ springBoot {
 }
 
 task createPropertiesFile(dependsOn: processResources) << {
-    storeProperties("$buildDir", "bootstrap.properties", createBootstrapProperties(applicationName))
-    storeProperties(configFolderPath, "${applicationName}.properties", decorateCommonProperties(createCommonProperties()))
-    copyCommonProperties("$buildDir")
+    createBootstrapProperties(new Properties(), buildDir)
+    createCommonProperties(decorateCommonProperties(new Properties()))
+    copyCommonProperties(buildDir)
 }
 
 def decorateCommonProperties(props) {

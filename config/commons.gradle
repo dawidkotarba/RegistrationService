@@ -1,9 +1,15 @@
 ext {
+    createFolder = { path ->
+        def dir = new File(path)
+        if (!dir.exists()) {
+            dir.mkdirs()
+        }
+    }
 
-    storeProperties = { buildDir, propertiesName, propertiesFile ->
-        createFolder(buildDir + resourcesDir)
-        def path = new File(buildDir + resourcesDir + propertiesName)
-        propertiesFile.store(path.newWriter(), null)
+    createFile = { path, filename, file ->
+        createFolder(path)
+        def dir = new File("${path}/${filename}")
+        file.store(dir.newWriter(), null)
     }
 
     addOAuthAuthenticationProperties = { props ->
@@ -20,39 +26,30 @@ ext {
         props.setProperty("modules.usersModule.name", usersModuleName)
     }
 
-    createBootstrapProperties = { applicationName ->
-        Properties props = new Properties()
+    createBootstrapProperties = { props, buildDir ->
         props.setProperty("spring.application.name", applicationName)
-        props.setProperty("server.port", serverPort)
-        props.setProperty("spring.cloud.config.uri", "http://${configHost}:${configPort}")
-        return props
-    }
-
-    createCommonProperties = { ->
-        Properties props = new Properties()
-        props.setProperty("spring.application.name", applicationName)
-        props.setProperty("default.locale", defaultLocale)
         props.setProperty("server.port", serverPort)
         props.setProperty("jmx.rmi.host", jmxHost)
         props.setProperty("jmx.rmi.port", jmxPort)
+        props.setProperty("spring.cloud.config.uri", "http://${configHost}:${configPort}")
+
+        createFile("${buildDir}/${resourcesDir}", "bootstrap.properties", props)
+    }
+
+    createCommonProperties = { props ->
+        props.setProperty("default.locale", defaultLocale)
         props.setProperty("eureka.client.serviceUrl.defaultZone", "http://${eurekaHost}:${eurekaPort}/eureka/")
         props.setProperty("proxy.url", "http://${proxyHost}:${proxyPort}")
         addOAuthAuthenticationProperties(props)
         addModulesNames(props)
-        return props
+
+        createFile("ConfigurationModule/config", "${applicationName}.properties", props)
     }
 
     copyCommonProperties = { buildDir ->
         copy {
             from("../CommonModule/src/main/resources")
-            into(buildDir + resourcesDir)
-        }
-    }
-
-    createFolder = { path ->
-        def dir = new File(path)
-        if (!dir.exists()) {
-            dir.mkdirs()
+            into("${buildDir}${resourcesDir}")
         }
     }
 }
