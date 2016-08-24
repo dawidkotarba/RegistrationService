@@ -1,13 +1,10 @@
 package dawid.kotarba.template.config
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-import org.springframework.context.annotation.{ComponentScan, Configuration}
+import dawid.kotarba.common.annotation.SpringBootConfiguration
 
 /**
   * Created by Dawid on 01.07.2016.
   */
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan(Array("dawid.kotarba"))
+@SpringBootConfiguration
 class MainConfig
